@@ -132,13 +132,40 @@ async def scrape_product(page, url: str) -> bool:
                 imageSources.add(window.insider_object.product.product_image_url);
             }
 
-            document.querySelectorAll('img, [data-zoom-image], [data-original-src]').forEach(el => {
-                if (el.src && !el.src.includes('error.png') && el.src.includes('/medias/')) imageSources.add(el.src);
-                const original = el.getAttribute('data-original-src');
-                if (original && original.includes('/medias/')) imageSources.add(original);
-                const zoom = el.getAttribute('data-zoom-image');
-                if (zoom && zoom.includes('/medias/')) imageSources.add(zoom);
-            });
+            // Targeted selectors for product images and thumbnails
+            const imageSelectors = [
+                '.pdp__image img',
+                '.pdp__thumbnails img',
+                '.pdp__image [data-zoom-image]',
+                '.pdp__thumbnails [data-zoom-image]',
+                '.product-images img',
+                '.product-gallery img'
+            ];
+            const blacklist = ['facebook', 'twitter', 'tiktok', 'instagram', 'youtube', 'linkedin', 'whatsapp', 'logo', 'icon', 'banner', 'promotion', 'liquor', 'header', 'footer'];
+
+            const processElement = (el) => {
+                const src = el.getAttribute('src') || '';
+                const original = el.getAttribute('data-original-src') || '';
+                const zoom = el.getAttribute('data-zoom-image') || '';
+                const dataSrc = el.getAttribute('data-src') || '';
+
+                [src, original, zoom, dataSrc].forEach(url => {
+                    if (url && (url.includes('/medias/') || url.includes('/products/')) && !url.includes('error.png')) {
+                        const lowUrl = url.toLowerCase();
+                        // Filter out common UI elements/social icons
+                        const isBlacklisted = blacklist.some(term => lowUrl.includes(term));
+                        if (!isBlacklisted) imageSources.add(url);
+                    }
+                });
+            };
+
+            const targetElements = document.querySelectorAll(imageSelectors.join(','));
+            if (targetElements.length > 0) {
+                targetElements.forEach(processElement);
+            } else {
+                // Fallback if no specific containers found
+                document.querySelectorAll('img, [data-zoom-image], [data-original-src]').forEach(processElement);
+            }
 
             const getPriceText = (selector) => {
                 const el = document.querySelector(selector);
