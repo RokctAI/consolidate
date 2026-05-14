@@ -1,3 +1,4 @@
+import random
 import os
 import sys
 import asyncio
@@ -8,6 +9,7 @@ import re
 from typing import Optional, Dict, Any, List
 from urllib.parse import urljoin
 import requests
+import time
 from playwright.async_api import async_playwright
 from playwright_stealth import Stealth
 
@@ -17,7 +19,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler(".rokct/agent/logs/shoprite_scraper.log"),
+        logging.FileHandler(".rokct/agent/logs/shoprite_scraper.log", mode="w"),
         logging.StreamHandler(sys.stdout)
     ]
 )
@@ -110,27 +112,41 @@ async def get_hardened_context(browser, headless: bool = False):
     """Creates a browser context with hardened fingerprints to avoid bot detection."""
     context = await browser.new_context(
         user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        viewport={"width": 1280, "height": 800},
+        viewport={"width": 1920, "height": 1080},
         locale="en-ZA",
         timezone_id="Africa/Johannesburg",
         extra_http_headers={
             "Accept-Language": "en-ZA,en;q=0.9",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Sec-Ch-Ua": '"Not-A.Brand";v="99", "Chromium";v="124", "Google Chrome";v="124"',
+            "Sec-Ch-Ua-Mobile": "?0",
+            "Sec-Ch-Ua-Platform": '"Windows"',
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1",
+            "Upgrade-Insecure-Requests": "1"
         }
     )
     return context
 
 async def get_stealthy_page(context):
-    """Creates a new page with playwright-stealth applied."""
+    """Creates a new page with playwright-stealth and manual overrides."""
     page = await context.new_page()
     await Stealth().apply_stealth_async(page)
+    # Additional manual overrides to further mask automation
+    await page.add_init_script("""
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+        Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]});
+        Object.defineProperty(navigator, 'languages', {get: () => ['en-ZA', 'en']});
+    """)
     return page
 
 async def scrape_product(page, url: str) -> bool:
     logger.info(f"Scraping product: {url}")
 
     try:
-        await page.goto(url, wait_until="networkidle", timeout=60000)
+        await page.goto(url, wait_until="domcontentloaded", timeout=60000)
         await page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
         await page.wait_for_timeout(3000)
 
@@ -354,10 +370,28 @@ async def main():
         context = await get_hardened_context(browser, headless=args.headless)
         page = await get_stealthy_page(context)
 
+        logger.info(f"Establishing cookies via {BASE_URL}")
+        try:
+            await page.goto(BASE_URL, wait_until="domcontentloaded", timeout=30000)
+            await asyncio.sleep(random.uniform(2, 4))
+        except Exception as e:
+            logger.warning(f"Failed to load home page: {e}")
+
         logger.info(f"Fetching category page: {cat_url}")
         try:
-            response = await page.goto(cat_url, wait_until="networkidle", timeout=60000)
-            logger.info(f"Response status: {response.status if response else 'No Response'}")
+            response = None
+            for attempt in range(3):
+                try:
+                    response = await page.goto(cat_url, wait_until="domcontentloaded", timeout=60000)
+                    if response and response.status == 200:
+                        break
+                    logger.warning(f"Attempt {attempt + 1} failed with status: {response.status if response else 'No Response'}")
+                    await asyncio.sleep(random.uniform(2, 5))
+                except Exception as e:
+                    logger.warning(f"Attempt {attempt + 1} exception: {e}")
+                    await asyncio.sleep(random.uniform(2, 5))
+
+            logger.info(f"Final response status: {response.status if response else 'No Response'}")
 
             await page.wait_for_timeout(5000)
 
