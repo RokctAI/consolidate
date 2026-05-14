@@ -1,0 +1,9 @@
+name: "Todo to Issue"
+on: [push]
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Check for TODOs"
+        run: grep -r "TODO" . || echo "No TODOs"
