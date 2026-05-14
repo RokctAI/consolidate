@@ -35,9 +35,9 @@ jobs:
         env:
           PYTHONPATH: .
 
-      - name: Update Prices
+      - name: Update Prices and Maintain Images
         run: |
-          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python .rokct/scripts/scrappers/shoprite/update_prices.py
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python .rokct/scripts/scrappers/shoprite/maintain.py
         env:
           PYTHONPATH: .
 
