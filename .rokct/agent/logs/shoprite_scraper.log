@@ -138,3 +138,112 @@ Call log:
 2026-05-14 16:06:53,435 [INFO] Page title: All Departments | Shoprite ZA
 2026-05-14 16:06:53,440 [INFO] Found 10 products to scrape
 2026-05-14 16:06:53,440 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Beef-Madras-Cook-In-Sauce-Sachet-15g/p/10641192EA
+2026-05-14 16:07:22,155 [INFO] Found 5 candidate images
+2026-05-14 16:07:22,635 [INFO] Downloaded image: rajah-beef-madras-cook-in-sauce-sachet-15g_0.jpg
+2026-05-14 16:07:22,995 [INFO] Downloaded image: rajah-beef-madras-cook-in-sauce-sachet-15g_1.jpg
+2026-05-14 16:07:24,326 [INFO] Downloaded image: rajah-beef-madras-cook-in-sauce-sachet-15g_2.jpg
+2026-05-14 16:07:24,654 [INFO] Downloaded image: rajah-beef-madras-cook-in-sauce-sachet-15g_3.jpg
+2026-05-14 16:07:33,154 [INFO] Downloaded image: rajah-beef-madras-cook-in-sauce-sachet-15g_4.jpg
+2026-05-14 16:07:33,159 [INFO] Successfully scraped rajah-beef-madras-cook-in-sauce-sachet-15g
+2026-05-14 16:07:34,173 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Chicken-Tikka-Cook-In-Sauce-Sachet-15g/p/10641194EA
+2026-05-14 16:08:26,464 [INFO] Skipping rajah-chicken-tikka-cook-in-sauce-sachet-15g, card already exists.
+2026-05-14 16:08:27,476 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Royco-Stew-Mix-For-Chicken-200g/p/10498612EA
+2026-05-14 16:09:05,170 [INFO] Skipping royco-stew-mix-for-chicken-200g, card already exists.
+2026-05-14 16:09:06,182 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Spreads%2C-Honey-and-Preserves/Red-Bicycle-Speculoos-Crunchy-Cookie-Spread-350g/p/10532276EA
+2026-05-14 16:09:22,759 [INFO] Skipping red-bicycle-speculoos-crunchy-cookie-spread-350g, card already exists.
+2026-05-14 16:09:23,759 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Easy-Crispy-Seafood-Coating-Mix-200g/p/10602244EA
+2026-05-14 16:09:59,415 [INFO] Skipping easy-crispy-seafood-coating-mix-200g, card already exists.
+2026-05-14 16:10:00,431 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Robertsons-Indian-Spicy-Lentil-Dhal-Cook-In-Sauce-48g/p/10641181EA
+2026-05-14 16:10:16,246 [INFO] Skipping robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g, card already exists.
+2026-05-14 16:10:17,261 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Table-Condiments-and-Dressings/Knorr-Balsamic-and-Pineapple-Salad-Dressing-340ml/p/10618040EA
+2026-05-14 16:10:30,601 [INFO] Skipping knorr-balsamic-amp-pineapple-salad-dressing-340ml, card already exists.
+2026-05-14 16:10:31,605 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Milk%2C-Butter-and-Eggs/Darling-Fresh-Full-Cream-Milk-Sachet-1L/p/10124889EA
+2026-05-14 16:10:46,346 [INFO] Skipping darling-fresh-full-cream-milk-sachet-1l, card already exists.
+2026-05-14 16:10:47,353 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Toaster-White-Bread-700g/p/10456482EA
+2026-05-14 16:11:08,128 [INFO] Skipping blue-ribbon-toaster-white-bread-700g, card already exists.
+2026-05-14 16:11:09,129 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Brown-Bread-600g/p/10810522EA
+2026-05-14 16:11:34,666 [INFO] Skipping brown-bread-600g, card already exists.
+2026-05-14 16:14:19,889 [INFO] Running in headed mode
+2026-05-14 16:14:21,278 [INFO] Fetching category page: https://www.shoprite.co.za/c-2256/All-Departments
+2026-05-14 16:14:57,596 [INFO] Response status: 200
+2026-05-14 16:15:02,656 [INFO] Page title: All Departments | Shoprite ZA
+2026-05-14 16:15:02,664 [INFO] Found 20 products to scrape
+2026-05-14 16:15:02,664 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Beef-Madras-Cook-In-Sauce-Sachet-15g/p/10641192EA
+2026-05-14 16:15:19,768 [INFO] Skipping rajah-beef-madras-cook-in-sauce-sachet-15g, card already exists.
+2026-05-14 16:15:20,773 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Chicken-Tikka-Cook-In-Sauce-Sachet-15g/p/10641194EA
+2026-05-14 16:15:37,673 [INFO] Skipping rajah-chicken-tikka-cook-in-sauce-sachet-15g, card already exists.
+2026-05-14 16:15:38,677 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Royco-Stew-Mix-For-Chicken-200g/p/10498612EA
+2026-05-14 16:15:52,869 [INFO] Skipping royco-stew-mix-for-chicken-200g, card already exists.
+2026-05-14 16:15:53,875 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Spreads%2C-Honey-and-Preserves/Red-Bicycle-Speculoos-Crunchy-Cookie-Spread-350g/p/10532276EA
+2026-05-14 16:16:10,119 [INFO] Skipping red-bicycle-speculoos-crunchy-cookie-spread-350g, card already exists.
+2026-05-14 16:16:11,121 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Easy-Crispy-Seafood-Coating-Mix-200g/p/10602244EA
+2026-05-14 16:17:08,203 [INFO] Skipping easy-crispy-seafood-coating-mix-200g, card already exists.
+2026-05-14 16:17:09,219 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Robertsons-Indian-Spicy-Lentil-Dhal-Cook-In-Sauce-48g/p/10641181EA
+2026-05-14 16:17:23,223 [INFO] Skipping robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g, card already exists.
+2026-05-14 16:17:24,224 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Table-Condiments-and-Dressings/Knorr-Balsamic-and-Pineapple-Salad-Dressing-340ml/p/10618040EA
+2026-05-14 16:17:43,283 [INFO] Skipping knorr-balsamic-amp-pineapple-salad-dressing-340ml, card already exists.
+2026-05-14 16:17:44,297 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Milk%2C-Butter-and-Eggs/Darling-Fresh-Full-Cream-Milk-Sachet-1L/p/10124889EA
+2026-05-14 16:17:58,949 [INFO] Skipping darling-fresh-full-cream-milk-sachet-1l, card already exists.
+2026-05-14 16:17:59,956 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Toaster-White-Bread-700g/p/10456482EA
+2026-05-14 16:18:10,264 [INFO] Skipping blue-ribbon-toaster-white-bread-700g, card already exists.
+2026-05-14 16:18:11,277 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Brown-Bread-600g/p/10810522EA
+2026-05-14 16:18:33,385 [INFO] Skipping brown-bread-600g, card already exists.
+2026-05-14 16:18:34,388 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Toiletries/Sanitary-Protection/Sanitary-Pads-and-Panty-Liners/Caress-Regular-Maxi-Sanitary-Pads-8-Pack/p/10730757EA
+2026-05-14 16:18:46,203 [INFO] Found 2 candidate images
+2026-05-14 16:18:46,769 [INFO] Downloaded image: caress-regular-maxi-sanitary-pads-8-pack_0.jpg
+2026-05-14 16:18:47,276 [INFO] Downloaded image: caress-regular-maxi-sanitary-pads-8-pack_1.jpg
+2026-05-14 16:18:47,277 [INFO] Successfully scraped caress-regular-maxi-sanitary-pads-8-pack
+2026-05-14 16:18:48,287 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Panini-Roll-Single/p/10397287EA
+2026-05-14 16:19:11,171 [INFO] Found 5 candidate images
+2026-05-14 16:19:12,606 [INFO] Downloaded image: panini-roll-single_0.jpg
+2026-05-14 16:19:15,988 [INFO] Downloaded image: panini-roll-single_1.jpg
+2026-05-14 16:19:16,827 [INFO] Downloaded image: panini-roll-single_2.jpg
+2026-05-14 16:19:17,336 [INFO] Downloaded image: panini-roll-single_3.jpg
+2026-05-14 16:19:17,950 [INFO] Downloaded image: panini-roll-single_4.jpg
+2026-05-14 16:19:17,950 [INFO] Successfully scraped panini-roll-single
+2026-05-14 16:19:18,955 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Frozen-Food/Frozen-Meat-and-Poultry/County-Fair-Frozen-Chicken-Mixed-Portions-With-Brine-Based-Mixture-5kg/p/10538316EA
+2026-05-14 16:19:29,287 [INFO] Found 2 candidate images
+2026-05-14 16:19:29,875 [INFO] Downloaded image: county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg_0.jpg
+2026-05-14 16:19:30,440 [INFO] Downloaded image: county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg_1.jpg
+2026-05-14 16:19:30,441 [INFO] Successfully scraped county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg
+2026-05-14 16:19:31,447 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Meat-and-Poultry/Farmbest-Fresh-Chicken-Braai-Pack-5-Piece-Per-kg/p/10357568KG
+2026-05-14 16:19:43,437 [INFO] Found 2 candidate images
+2026-05-14 16:19:43,802 [INFO] Downloaded image: farmbest-fresh-chicken-braai-pack-5-piece-per-kg_0.jpg
+2026-05-14 16:19:44,255 [INFO] Downloaded image: farmbest-fresh-chicken-braai-pack-5-piece-per-kg_1.jpg
+2026-05-14 16:19:44,256 [INFO] Successfully scraped farmbest-fresh-chicken-braai-pack-5-piece-per-kg
+2026-05-14 16:19:45,258 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Meat-and-Poultry/Farmbest-Fresh-Chicken-Braai-Pack-650g/p/10874870EA
+2026-05-14 16:20:02,916 [INFO] Found 2 candidate images
+2026-05-14 16:20:03,412 [INFO] Downloaded image: farmbest-fresh-chicken-braai-pack-650g_0.jpg
+2026-05-14 16:20:03,930 [INFO] Downloaded image: farmbest-fresh-chicken-braai-pack-650g_1.jpg
+2026-05-14 16:20:03,935 [INFO] Successfully scraped farmbest-fresh-chicken-braai-pack-650g
+2026-05-14 16:20:04,944 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Drinks/Beer-and-Cider/Beer/Carling-Black-Label-Beer-Bottle-750ml/p/10125600EA
+2026-05-14 16:20:21,468 [INFO] Found 2 candidate images
+2026-05-14 16:20:21,892 [INFO] Downloaded image: carling-black-label-beer-bottle-750ml_0.jpg
+2026-05-14 16:20:22,559 [INFO] Downloaded image: carling-black-label-beer-bottle-750ml_1.jpg
+2026-05-14 16:20:22,561 [INFO] Successfully scraped carling-black-label-beer-bottle-750ml
+2026-05-14 16:20:23,570 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Standard-White-Bread-600g/p/10141145EA
+2026-05-14 16:20:39,030 [INFO] Found 2 candidate images
+2026-05-14 16:20:39,864 [INFO] Downloaded image: standard-white-bread-600g_0.jpg
+2026-05-14 16:20:40,544 [INFO] Downloaded image: standard-white-bread-600g_1.jpg
+2026-05-14 16:20:40,546 [INFO] Successfully scraped standard-white-bread-600g
+2026-05-14 16:20:41,558 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Sliced-White-Bread-700g/p/10136370EA
+2026-05-14 16:20:57,876 [INFO] Found 5 candidate images
+2026-05-14 16:20:58,491 [INFO] Downloaded image: blue-ribbon-sliced-white-bread-700g_0.jpg
+2026-05-14 16:20:59,172 [INFO] Downloaded image: blue-ribbon-sliced-white-bread-700g_1.jpg
+2026-05-14 16:20:59,992 [INFO] Downloaded image: blue-ribbon-sliced-white-bread-700g_2.jpg
+2026-05-14 16:21:00,685 [INFO] Downloaded image: blue-ribbon-sliced-white-bread-700g_3.jpg
+2026-05-14 16:21:01,585 [INFO] Downloaded image: blue-ribbon-sliced-white-bread-700g_4.jpg
+2026-05-14 16:21:01,593 [INFO] Successfully scraped blue-ribbon-sliced-white-bread-700g
+2026-05-14 16:21:02,607 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Vegetables/Potatoes-7kg/p/10147186EA
+2026-05-14 16:21:22,690 [INFO] Found 2 candidate images
+2026-05-14 16:21:23,335 [INFO] Downloaded image: potatoes-7kg_0.jpg
+2026-05-14 16:21:24,249 [INFO] Downloaded image: potatoes-7kg_1.jpg
+2026-05-14 16:21:24,253 [INFO] Successfully scraped potatoes-7kg
+2026-05-14 16:21:25,265 [INFO] Scraping product: https://www.shoprite.co.za/All-Departments/Drinks/Soft-Drinks/Cola/Coca-Cola-Original-Taste-Less-Sugar-Soft-Drink-2L/p/10136669EA
+2026-05-14 16:21:37,573 [INFO] Found 5 candidate images
+2026-05-14 16:21:40,070 [INFO] Downloaded image: coca-cola-original-taste-less-sugar-soft-drink-2l_0.jpg
+2026-05-14 16:21:40,433 [INFO] Downloaded image: coca-cola-original-taste-less-sugar-soft-drink-2l_1.jpg
+2026-05-14 16:21:41,121 [INFO] Downloaded image: coca-cola-original-taste-less-sugar-soft-drink-2l_2.jpg
+2026-05-14 16:21:42,001 [INFO] Downloaded image: coca-cola-original-taste-less-sugar-soft-drink-2l_3.jpg
+2026-05-14 16:21:43,892 [INFO] Downloaded image: coca-cola-original-taste-less-sugar-soft-drink-2l_4.jpg
+2026-05-14 16:21:43,899 [INFO] Successfully scraped coca-cola-original-taste-less-sugar-soft-drink-2l
