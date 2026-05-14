@@ -283,14 +283,49 @@ async def main():
 
         logger.info(f"Fetching category page: {cat_url}")
         try:
-            await page.goto(cat_url, wait_until="networkidle", timeout=60000)
+            response = await page.goto(cat_url, wait_until="networkidle", timeout=60000)
+            logger.info(f"Response status: {response.status if response else 'No Response'}")
+
             await page.wait_for_timeout(5000)
+
+            page_info = await page.evaluate("""() => {
+                const text = document.body.innerText.toLowerCase();
+                return {
+                    title: document.title,
+                    isBlocked: text.includes('oh no!') || text.includes('access denied') || text.includes('blocked') || text.includes('captcha'),
+                    isMaintenance: text.includes('maintenance') || text.includes('scheduled update'),
+                    linkCount: document.querySelectorAll('a').length,
+                    htmlSnippet: document.body.innerHTML.substring(0, 500)
+                };
+            }""")
+
+            logger.info(f"Page title: {page_info['title']}")
+            if page_info['isBlocked']:
+                logger.error("Detected bot blocking or access denial page.")
+            if page_info['isMaintenance']:
+                logger.warning("Site appears to be in maintenance mode.")
 
             product_links = await page.evaluate("""() => {
                 const links = new Set();
-                document.querySelectorAll('a').forEach(a => { if (a.href.includes('/p/')) links.add(a.href); });
+                // Broaden search: look for any links containing /p/ or within product grid containers
+                document.querySelectorAll('a[href*="/p/"]').forEach(a => links.add(a.href));
+
+                // Fallback for different structures
+                if (links.size === 0) {
+                   document.querySelectorAll('.product-item a, .item-product a').forEach(a => {
+                       if (a.href && !a.href.includes('#')) links.add(a.href);
+                   });
+                }
                 return Array.from(links);
             }""")
+
+            if len(product_links) == 0:
+                logger.warning(f"No product links found. Total <a> tags on page: {page_info['linkCount']}")
+                logger.debug(f"Page HTML Snippet: {page_info['htmlSnippet']}")
+                # Take a debug screenshot
+                screenshot_path = f".rokct/agent/logs/category_debug_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+                await page.screenshot(path=screenshot_path)
+                logger.info(f"Saved debug screenshot to {screenshot_path}")
 
             if args.limit > 0: product_links = product_links[:args.limit]
             logger.info(f"Found {len(product_links)} products to scrape")
