@@ -35,7 +35,8 @@ async def update_price(page, card_path: str):
 
     try:
         await page.goto(url, wait_until="networkidle", timeout=60000)
-        await page.wait_for_timeout(2000)
+        await page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)");
+        await page.wait_for_timeout(3000)
 
         data = await page.evaluate(JS_PRICE_EXTRACTION)
 
@@ -48,10 +49,15 @@ async def update_price(page, card_path: str):
             return
 
         price_section = f"## Price\n- **Current Price**: R{current_price}"
+        if prices.get('is_card_price'):
+            price_section += " (WITH CARD)"
         if was_price:
             price_section += f"\n- **Was**: R{was_price}"
+        if prices.get('promotion_dates'):
+            price_section += f"\n- **Validity**: {prices.get('promotion_dates')}"
 
-        new_content = re.sub(r'## Price\n(?:- \*\*Current Price\*\*: R.*\n?(?:- \*\*Was\*\*: R.*\n?)?)', price_section + "\n", content)
+        # Improved regex to catch all possible lines in the Price section
+        new_content = re.sub(r'## Price\n(?:- .*\n?)*\n(?=## Description)', price_section + "\n\n", content)
 
         if new_content != content:
             with open(card_path, 'w') as f:

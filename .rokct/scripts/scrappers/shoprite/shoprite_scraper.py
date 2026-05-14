@@ -37,9 +37,17 @@ JS_PRICE_EXTRACTION = """() => {
         const el = document.querySelector(selector);
         return el ? el.innerText.trim() : null;
     };
+    const cardPriceEl = Array.from(document.querySelectorAll('.pdp-main-details__price, .special-now-price')).find(el => {
+        const next = el.nextElementSibling;
+        return next && next.innerText.toUpperCase().includes('WITH CARD');
+    });
+    const promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates')?.innerText.trim();
+
     return {
         price_now_raw: getPriceText('.special-now-price, .price-now, .pdp-main-details__price'),
         price_was_raw: getPriceText('.special-was-price, .price-was, .pdp-main-details__price-was'),
+        is_card_price: !!cardPriceEl || document.body.innerText.includes('WITH CARD'),
+        promotion_dates: promoDates || Array.from(document.querySelectorAll('*')).find(el => el.innerText && el.innerText.includes('Valid until'))?.innerText.trim(),
         insider_product: window.insider_object?.product
     };
 }"""
@@ -51,7 +59,7 @@ def slugify(text: str) -> str:
     text = text.strip('-')
     return text
 
-def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[str]]:
+def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[Any]]:
     """
     Standalone function to extract price data from the product data extracted by Playwright.
     """
@@ -61,13 +69,19 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[str]]:
     insider = data.get('insider_product')
     if insider:
         price_now = insider.get('unit_sale_price')
-        if price_now is not None:
-            price_now = f"{price_now:.2f}"
+        # Check for NaN or None
+        if price_now is not None and str(price_now).lower() != 'nan':
+            try:
+                price_now = f"{float(price_now):.2f}"
+            except (ValueError, TypeError):
+                price_now = None
+        else:
+            price_now = None
 
         unit_price = insider.get('unit_price')
         try:
             if unit_price is not None and price_now and float(unit_price) > float(price_now):
-                price_was = f"{unit_price:.2f}"
+                price_was = f"{float(unit_price):.2f}"
         except (ValueError, TypeError):
             pass
 
@@ -87,7 +101,9 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[str]]:
 
     return {
         "current_price": price_now,
-        "was_price": price_was
+        "was_price": price_was,
+        "is_card_price": data.get('is_card_price', False),
+        "promotion_dates": data.get('promotion_dates')
     }
 
 async def get_hardened_context(browser, headless: bool = False):
@@ -172,10 +188,18 @@ async def scrape_product(page, url: str) -> bool:
                 return el ? el.innerText.trim() : null;
             };
 
+            const cardPriceEl = Array.from(document.querySelectorAll('.pdp-main-details__price, .special-now-price')).find(el => {
+                const next = el.nextElementSibling;
+                return next && next.innerText.toUpperCase().includes('WITH CARD');
+            });
+            const promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates')?.innerText.trim();
+
             return {
                 name: document.querySelector('h1, .pdp-main-details__name')?.innerText.trim(),
                 price_now_raw: getPriceText('.special-now-price, .price-now, .pdp-main-details__price'),
                 price_was_raw: getPriceText('.special-was-price, .price-was, .pdp-main-details__price-was'),
+                is_card_price: !!cardPriceEl || document.body.innerText.includes('WITH CARD'),
+                promotion_dates: promoDates || Array.from(document.querySelectorAll('*')).find(el => el.innerText && el.innerText.includes('Valid until'))?.innerText.trim(),
                 description: document.querySelector('.pdp__description, .pdp-details__description, .product-details-description, .pdp-main-details__description')?.innerText.trim(),
                 images: Array.from(imageSources).filter(src => src && !src.includes('logo')),
                 nutrition_raw: nutritionText.join('\\n'),
@@ -273,12 +297,15 @@ async def scrape_product(page, url: str) -> bool:
                     nutrition_md = "\n## Nutrition Information\n" + "\n".join([f"- {l}" for l in lines])
 
         was_price_line = f"\n- **Was**: R{prices['was_price']}" if prices['was_price'] else ""
+        card_price_extra = " (WITH CARD)" if prices.get('is_card_price') else ""
+        valid_line = f"\n- **Validity**: {prices.get('promotion_dates')}" if prices.get('promotion_dates') else ""
+
         images_list = "\n".join([f"- images/{fn}" for fn in image_filenames])
 
         card_content = f"""# {name}
 
 ## Price
-- **Current Price**: R{prices['current_price'] or 'N/A'}{was_price_line}
+- **Current Price**: R{prices['current_price'] or 'N/A'}{card_price_extra}{was_price_line}{valid_line}
 
 ## Description
 {data.get('description') or 'No description available.'}
@@ -351,17 +378,20 @@ async def main():
             if page_info['isMaintenance']:
                 logger.warning("Site appears to be in maintenance mode.")
 
-            product_links = await page.evaluate("""() => {
-                const links = new Set();
-                document.querySelectorAll('a[href*="/p/"]').forEach(a => links.add(a.href));
+            if "/p/" in cat_url:
+                product_links = [cat_url]
+            else:
+                product_links = await page.evaluate("""() => {
+                    const links = new Set();
+                    document.querySelectorAll('a[href*="/p/"]').forEach(a => links.add(a.href));
 
-                if (links.size === 0) {
-                   document.querySelectorAll('.product-item a, .item-product a').forEach(a => {
-                       if (a.href && !a.href.includes('#')) links.add(a.href);
-                   });
-                }
-                return Array.from(links);
-            }""")
+                    if (links.size === 0) {
+                       document.querySelectorAll('.product-item a, .item-product a').forEach(a => {
+                           if (a.href && !a.href.includes('#')) links.add(a.href);
+                       });
+                    }
+                    return Array.from(links);
+                }""")
 
             if len(product_links) == 0:
                 logger.warning(f"No product links found. Total <a> tags on page: {page_info['linkCount']}")
