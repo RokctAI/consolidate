@@ -20,20 +20,24 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
+      - name: Run RokctAI Install Script
+        run: curl -sSL https://raw.githubusercontent.com/RokctAI/shared-workflows/main/install.sh | bash
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           playwright install chromium
+          sudo apt-get update && sudo apt-get install -y xvfb
 
       - name: Run Scraper
         run: |
-          python .rokct/scripts/scrappers/shoprite/shoprite_scraper.py --limit 20 --headless
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python .rokct/scripts/scrappers/shoprite/shoprite_scraper.py --limit 20 --headless
         env:
           PYTHONPATH: .
 
       - name: Update Prices
         run: |
-          python .rokct/scripts/scrappers/shoprite/update_prices.py
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" python .rokct/scripts/scrappers/shoprite/update_prices.py
         env:
           PYTHONPATH: .
 

@@ -1,3 +1,4 @@
+import random
 import os
 import sys
 import asyncio
@@ -15,7 +16,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
-        logging.FileHandler(".rokct/agent/logs/shoprite_scraper.log"),
+        logging.FileHandler(".rokct/agent/logs/shoprite_scraper.log", mode="w"),
         logging.StreamHandler(sys.stdout)
     ]
 )
@@ -34,7 +35,22 @@ async def update_price(page, card_path: str):
     logger.info(f"Updating price for: {url}")
 
     try:
-        await page.goto(url, wait_until="networkidle", timeout=60000)
+        response = None
+        for attempt in range(3):
+            try:
+                response = await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                if response and response.status == 200:
+                    break
+                logger.warning(f"Attempt {attempt + 1} for {url} failed: {response.status if response else 'No Response'}")
+                await asyncio.sleep(random.uniform(2, 5))
+            except Exception as e:
+                logger.warning(f"Attempt {attempt + 1} for {url} exception: {e}")
+                await asyncio.sleep(random.uniform(2, 5))
+
+        if not response or response.status != 200:
+            logger.error(f"Failed to load {url} after 3 attempts")
+            return
+
         await page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)");
         await page.wait_for_timeout(3000)
 
@@ -93,6 +109,13 @@ async def main():
             for file in files:
                 if file.endswith("_card.md"):
                     cards.append(os.path.join(root, file))
+
+        logger.info("Establishing cookies via home page...")
+        try:
+            await page.goto("https://www.shoprite.co.za", wait_until="domcontentloaded", timeout=30000)
+            await asyncio.sleep(random.uniform(2, 4))
+        except Exception as e:
+            logger.warning(f"Failed to load home page: {e}")
 
         logger.info(f"Found {len(cards)} product cards to update.")
         for card_path in cards:
