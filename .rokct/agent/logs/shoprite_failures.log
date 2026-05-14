@@ -1,4 +1,0 @@
-2026-05-14 15:58:30,888 [ERROR] Exception for https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Beef-Madras-Cook-In-Sauce-Sachet-15g/p/10641192EA: Page.goto: Timeout 60000ms exceeded.
-Call log:
-  - navigating to "https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Beef-Madras-Cook-In-Sauce-Sachet-15g/p/10641192EA", waiting until "networkidle"
-

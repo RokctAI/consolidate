@@ -11,7 +11,7 @@ from urllib.parse import urljoin
 import requests
 import time
 from playwright.async_api import async_playwright
-from playwright_stealth import Stealth
+
 
 # Setup logging
 os.makedirs(".rokct/agent/logs", exist_ok=True)
@@ -154,7 +154,22 @@ async def get_hardened_context(browser, headless: bool = False):
 async def get_stealthy_page(context):
     """Creates a new page with playwright-stealth and manual overrides."""
     page = await context.new_page()
-    await Stealth().apply_stealth_async(page)
+
+    try:
+        import playwright_stealth
+        if hasattr(playwright_stealth, 'Stealth'):
+            await playwright_stealth.Stealth().apply_stealth_async(page)
+        elif hasattr(playwright_stealth, 'stealth_async'):
+            await playwright_stealth.stealth_async(page)
+        elif hasattr(playwright_stealth, 'stealth'):
+            # In some versions stealth is a function, in others it might be a module
+            if callable(playwright_stealth.stealth):
+                res = playwright_stealth.stealth(page)
+                if asyncio.iscoroutine(res):
+                    await res
+    except Exception as e:
+        logger.warning(f"Could not apply playwright-stealth: {e}")
+
     # Additional manual overrides to further mask automation
     await page.add_init_script("""
         Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
