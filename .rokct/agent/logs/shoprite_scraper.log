@@ -1,12 +1,12 @@
-2026-05-14 14:57:22,561 [INFO] Running in headless mode
-2026-05-14 14:57:24,720 [INFO] Establishing cookies via https://www.shoprite.co.za
-2026-05-14 14:57:29,293 [INFO] Fetching category page: https://www.shoprite.co.za/c-2256/All-Departments
-2026-05-14 14:57:29,339 [WARNING] Attempt 1 failed with status: 403
-2026-05-14 14:57:32,603 [WARNING] Attempt 2 failed with status: 403
-2026-05-14 14:57:34,946 [WARNING] Attempt 3 failed with status: 403
-2026-05-14 14:57:37,154 [INFO] Final response status: 403
-2026-05-14 14:57:42,168 [INFO] Page title: Shoprite
-2026-05-14 14:57:42,168 [ERROR] Detected bot blocking or access denial page.
-2026-05-14 14:57:42,172 [WARNING] No product links found. Total <a> tags on page: 2
-2026-05-14 14:57:42,264 [INFO] Saved debug screenshot to .rokct/agent/logs/category_debug_20260514_145742.png
-2026-05-14 14:57:42,264 [INFO] Found 0 potential products on page
+2026-05-14 15:59:00,444 [INFO] Running in headless mode
+2026-05-14 15:59:03,828 [INFO] Establishing cookies via https://www.shoprite.co.za
+2026-05-14 15:59:07,405 [INFO] Fetching category page: https://www.shoprite.co.za/c-2256/All-Departments
+2026-05-14 15:59:07,514 [WARNING] Attempt 1 failed with status: 403
+2026-05-14 15:59:10,346 [WARNING] Attempt 2 failed with status: 403
+2026-05-14 15:59:14,528 [WARNING] Attempt 3 failed with status: 403
+2026-05-14 15:59:18,804 [INFO] Final response status: 403
+2026-05-14 15:59:23,829 [INFO] Page title: Shoprite
+2026-05-14 15:59:23,829 [ERROR] Detected bot blocking or access denial page.
+2026-05-14 15:59:23,836 [WARNING] No product links found. Total <a> tags on page: 2
+2026-05-14 15:59:24,217 [INFO] Saved debug screenshot to .rokct/agent/logs/category_debug_20260514_155923.png
+2026-05-14 15:59:24,217 [INFO] Found 0 potential products on page
