@@ -6,6 +6,31 @@
 ## Description
 Bakery's Brown Bread offers is perfect for sandwiches or snacks. Enjoy its rich flavour and satisfying texture, whether toasted or fresh. Ideal for various toppings, from butter and jam to avocado and smoked salmon.
 
+## Ingredients
+Brown Bread Wheat Flour Triticum Aestivum (Gluten), Water, Yeast, Sugar, Salt, Vegetable Fat (Palm Fruit), Soya Flour, Preservative (Calcium Propionate), Emulsifiers, Calcium Carbonate, Enzymes, Flour Improver, Stabiliser, Vitamins (A, B1, B2, B3, B6, D, Folic Acid), Minerals (Electrolytic Iron, Zinc Oxide)
+
+## Allergens
+Contains: Gluten, Soya, Wheat.
+
+## Benefits & Features
+Pre-sliced for convenience Soft texture Versatile for various recipes Perfect for your favourite sandwich or snack Can be enjoyed toasted
+
+## Specifications
+- **Product Brand**: Bakery
+- **Product Width (mm)**: 100
+- **Product Height (mm)**: 270
+- **Product Length (mm)**: 270
+- **Product Weight**: 600g
+- **Product Gross Weight (g)**: 615
+- **Product Depth (mm)**: 280
+- **What's in the box**: 1 x 600g Bakery Brown Bread
+- **Unit of Measure**: EA
+- **Main Barcode**: 6001224497410
+- **Ingredients**: Brown Bread Wheat Flour Triticum Aestivum (Gluten), Water, Yeast, Sugar, Salt, Vegetable Fat (Palm Fruit), Soya Flour, Preservative (Calcium Propionate), Emulsifiers, Calcium Carbonate, Enzymes, Flour Improver, Stabiliser, Vitamins (A, B1, B2, B3, B6, D, Folic Acid), Minerals (Electrolytic Iron, Zinc Oxide)
+- **Allergens**: Contains: Gluten, Soya, Wheat.
+- **Serving Size**: 67g
+- **Benefits & Features**: Pre-sliced for convenience Soft texture Versatile for various recipes Perfect for your favourite sandwich or snack Can be enjoyed toasted
+
 ## Nutrition Information
 | Nutrient | Per 100g | Per Serving |
 |----------|----------|-------------|

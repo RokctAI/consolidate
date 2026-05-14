@@ -190,10 +190,46 @@ async def scrape_product(page, url: str) -> bool:
             const nutritionText = [];
             const nutSelectors = ['.nutrition-table', '.product-nutrition-table', '.pdp__product-information', 'table'];
             for (const sel of document.querySelectorAll(nutSelectors.join(','))) {
-                if (sel.innerText.toLowerCase().includes('per 100')) {
+                const text = sel.innerText.toLowerCase();
+                if (text.includes('per 100') || text.includes('nutritional information')) {
                     nutritionText.push(sel.innerText);
                 }
             }
+
+            const getSectionText = (headerText) => {
+                const headers = Array.from(document.querySelectorAll('h2, h3, th, td, strong, span'));
+                const target = headers.find(h => h.innerText.trim().toLowerCase() === headerText.toLowerCase());
+                if (target) {
+                    // Try to find the content in the next sibling or parent's next sibling
+                    let content = target.nextElementSibling?.innerText.trim();
+                    if (!content) {
+                        content = target.parentElement?.nextElementSibling?.innerText.trim();
+                    }
+                    return content;
+                }
+                // Fallback: search for text in the whole body if it follows a specific pattern
+                const bodyText = document.body.innerText;
+                const regex = new RegExp(headerText + '\\\\s+([^\\\\n]+)', 'i');
+                const match = bodyText.match(regex);
+                return match ? match[1].trim() : null;
+            };
+
+            const getTableData = (tableSelector) => {
+                const tables = document.querySelectorAll(tableSelector);
+                const data = {};
+                tables.forEach(table => {
+                    const rows = table.querySelectorAll('tr');
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('th, td');
+                        if (cells.length >= 2) {
+                            const key = cells[0].innerText.trim();
+                            const value = cells[1].innerText.trim();
+                            if (key && value) data[key] = value;
+                        }
+                    });
+                });
+                return data;
+            };
 
             const imageSources = new Set();
             if (window.insider_object && window.insider_object.product && window.insider_object.product.product_image_url) {
@@ -255,6 +291,10 @@ async def scrape_product(page, url: str) -> bool:
                 description: document.querySelector('.pdp__description, .pdp-details__description, .product-details-description, .pdp-main-details__description')?.innerText.trim(),
                 images: Array.from(imageSources).filter(src => src && !src.includes('logo')),
                 nutrition_raw: nutritionText.join('\\n'),
+                ingredients: getSectionText('Ingredients'),
+                allergens: getSectionText('Allergens'),
+                benefits: getSectionText('Benefits & Features'),
+                specifications: getTableData('.pdp__product-information table, .product-specifications table, table'),
                 insider_product: window.insider_object?.product
             };
         }""")
@@ -354,6 +394,22 @@ async def scrape_product(page, url: str) -> bool:
 
         images_list = "\n".join([f"- images/{fn}" for fn in image_filenames])
 
+        additional_info = ""
+        if data.get('ingredients'):
+            additional_info += f"\n## Ingredients\n{data['ingredients']}\n"
+        if data.get('allergens'):
+            additional_info += f"\n## Allergens\n{data['allergens']}\n"
+        if data.get('benefits'):
+            additional_info += f"\n## Benefits & Features\n{data['benefits']}\n"
+        if data.get('specifications'):
+            specs = data['specifications']
+            if isinstance(specs, dict):
+                specs_md = "\n".join([f"- **{k}**: {v}" for k, v in specs.items() if not k.lower().startswith('nutritional')])
+                if specs_md:
+                    additional_info += f"\n## Specifications\n{specs_md}\n"
+            else:
+                additional_info += f"\n## Specifications\n{specs}\n"
+
         card_content = f"""# {name}
 
 ## Price
@@ -361,7 +417,7 @@ async def scrape_product(page, url: str) -> bool:
 
 ## Description
 {data.get('description') or 'No description available.'}
-{nutrition_md}
+{additional_info}{nutrition_md}
 ## Images
 {images_list}
 

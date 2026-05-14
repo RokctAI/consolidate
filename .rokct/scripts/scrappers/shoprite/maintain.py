@@ -64,11 +64,6 @@ def maintain_images():
 
                 # Warn if a listed image is missing from disk
                 for listed_image in listed_images:
-                    # listed_image is "images/filename.jpg"
-                    # product_dir is "products/some-product"
-                    full_path = os.path.join(product_dir, listed_image.replace('images/', 'images/')) # listed_image already has images/
-                    # Wait, if listed_image is "images/filename.jpg" and product_dir is "products/some-product"
-                    # os.path.join("products/some-product", "images/filename.jpg") is correct.
                     if not os.path.exists(os.path.join(product_dir, listed_image)):
                         logger.warning(f"Listed image not found on disk: {listed_image} (in {card_path})")
 
