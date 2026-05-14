@@ -241,7 +241,7 @@ async def scrape_product(page, url: str) -> bool:
 
         if os.path.exists(card_path):
             logger.info(f"Skipping {product_slug}, card already exists.")
-            return True
+            return "skipped"
 
         os.makedirs(f"{product_dir}/images", exist_ok=True)
 
@@ -338,7 +338,7 @@ async def scrape_product(page, url: str) -> bool:
             f.write(card_content)
 
         logger.info(f"Successfully scraped {product_slug}")
-        return True
+        return "scraped"
 
     except Exception as e:
         logger.error(f"Error scraping {url}: {e}")
@@ -434,12 +434,22 @@ async def main():
                 await page.screenshot(path=screenshot_path)
                 logger.info(f"Saved debug screenshot to {screenshot_path}")
 
-            if args.limit > 0: product_links = product_links[:args.limit]
-            logger.info(f"Found {len(product_links)} products to scrape")
-
+            logger.info(f"Found {len(product_links)} potential products on page")
+            scraped_count = 0
             for link in product_links:
-                await scrape_product(page, link)
-                await asyncio.sleep(1)
+                if args.limit > 0 and scraped_count >= args.limit:
+                    break
+
+                status = await scrape_product(page, link)
+                if status == "scraped":
+                    scraped_count += 1
+                    await asyncio.sleep(1)
+                elif status == "skipped":
+                    # Don't increment scraped_count, don't sleep (or sleep less)
+                    continue
+                else:
+                    # failure
+                    await asyncio.sleep(1)
 
         except Exception as e:
             logger.error(f"Failed to scrape category {cat_url}: {e}")
