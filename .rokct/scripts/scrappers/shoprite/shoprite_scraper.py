@@ -9,6 +9,7 @@ from typing import Optional, Dict, Any, List
 from urllib.parse import urljoin
 import requests
 from playwright.async_api import async_playwright
+from playwright_stealth import Stealth
 
 # Setup logging
 os.makedirs(".rokct/agent/logs", exist_ok=True)
@@ -64,7 +65,6 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[str]]:
             price_now = f"{price_now:.2f}"
 
         unit_price = insider.get('unit_price')
-        # Check if unit_price is a number and higher than price_now
         try:
             if unit_price is not None and price_now and float(unit_price) > float(price_now):
                 price_was = f"{unit_price:.2f}"
@@ -90,18 +90,36 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[str]]:
         "was_price": price_was
     }
 
+async def get_hardened_context(browser, headless: bool = False):
+    """Creates a browser context with hardened fingerprints to avoid bot detection."""
+    context = await browser.new_context(
+        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        viewport={"width": 1280, "height": 800},
+        locale="en-ZA",
+        timezone_id="Africa/Johannesburg",
+        extra_http_headers={
+            "Accept-Language": "en-ZA,en;q=0.9",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        }
+    )
+    return context
+
+async def get_stealthy_page(context):
+    """Creates a new page with playwright-stealth applied."""
+    page = await context.new_page()
+    await Stealth().apply_stealth_async(page)
+    return page
+
 async def scrape_product(page, url: str) -> bool:
     logger.info(f"Scraping product: {url}")
 
     try:
         await page.goto(url, wait_until="networkidle", timeout=60000)
-        # Scroll to ensure lazy images load
         await page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
         await page.wait_for_timeout(3000)
 
         data = await page.evaluate("""() => {
             const nutritionText = [];
-            // Try to find nutrition info in common containers
             const nutSelectors = ['.nutrition-table', '.product-nutrition-table', '.pdp__product-information', 'table'];
             for (const sel of document.querySelectorAll(nutSelectors.join(','))) {
                 if (sel.innerText.toLowerCase().includes('per 100')) {
@@ -110,19 +128,44 @@ async def scrape_product(page, url: str) -> bool:
             }
 
             const imageSources = new Set();
-            // Collect from insider object first
             if (window.insider_object && window.insider_object.product && window.insider_object.product.product_image_url) {
                 imageSources.add(window.insider_object.product.product_image_url);
             }
 
-            // Then from the page
-            document.querySelectorAll('img, [data-zoom-image], [data-original-src]').forEach(el => {
-                if (el.src && !el.src.includes('error.png') && el.src.includes('/medias/')) imageSources.add(el.src);
-                const original = el.getAttribute('data-original-src');
-                if (original && original.includes('/medias/')) imageSources.add(original);
-                const zoom = el.getAttribute('data-zoom-image');
-                if (zoom && zoom.includes('/medias/')) imageSources.add(zoom);
-            });
+            // Targeted selectors for product images and thumbnails
+            const imageSelectors = [
+                '.pdp__image img',
+                '.pdp__thumbnails img',
+                '.pdp__image [data-zoom-image]',
+                '.pdp__thumbnails [data-zoom-image]',
+                '.product-images img',
+                '.product-gallery img'
+            ];
+            const blacklist = ['facebook', 'twitter', 'tiktok', 'instagram', 'youtube', 'linkedin', 'whatsapp', 'logo', 'icon', 'banner', 'promotion', 'liquor', 'header', 'footer'];
+
+            const processElement = (el) => {
+                const src = el.getAttribute('src') || '';
+                const original = el.getAttribute('data-original-src') || '';
+                const zoom = el.getAttribute('data-zoom-image') || '';
+                const dataSrc = el.getAttribute('data-src') || '';
+
+                [src, original, zoom, dataSrc].forEach(url => {
+                    if (url && (url.includes('/medias/') || url.includes('/products/')) && !url.includes('error.png')) {
+                        const lowUrl = url.toLowerCase();
+                        // Filter out common UI elements/social icons
+                        const isBlacklisted = blacklist.some(term => lowUrl.includes(term));
+                        if (!isBlacklisted) imageSources.add(url);
+                    }
+                });
+            };
+
+            const targetElements = document.querySelectorAll(imageSelectors.join(','));
+            if (targetElements.length > 0) {
+                targetElements.forEach(processElement);
+            } else {
+                // Fallback if no specific containers found
+                document.querySelectorAll('img, [data-zoom-image], [data-original-src]').forEach(processElement);
+            }
 
             const getPriceText = (selector) => {
                 const el = document.querySelector(selector);
@@ -164,12 +207,10 @@ async def scrape_product(page, url: str) -> bool:
 
         prices = extract_price_from_page(data)
 
-        # Download images
         image_filenames = []
-        # Use a dict to avoid duplicate filenames from same/similar URLs
         seen_urls = set()
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
         }
 
         logger.info(f"Found {len(data.get('images', []))} candidate images")
@@ -181,7 +222,6 @@ async def scrape_product(page, url: str) -> bool:
             try:
                 img_response = requests.get(full_img_url, headers=headers, timeout=10)
                 if img_response.status_code == 200:
-                    # Specific requirement: Save as {product_slug}_{index}.jpg
                     filename = f"{product_slug}_{len(image_filenames)}.jpg"
                     filepath = f"{product_dir}/images/{filename}"
                     with open(filepath, 'wb') as f:
@@ -193,11 +233,9 @@ async def scrape_product(page, url: str) -> bool:
             except Exception as e:
                 logger.warning(f"Failed to download image {full_img_url}: {e}")
 
-        # Improved Nutrition Table Parsing
         nutrition_md = ""
         raw_nut = data.get('nutrition_raw', '')
         if raw_nut:
-            # Try to split by common headers
             per_100 = ""
             per_serving = ""
             if "per 100" in raw_nut.lower():
@@ -206,13 +244,11 @@ async def scrape_product(page, url: str) -> bool:
                 if len(parts) > 1:
                     per_serving = parts[1]
 
-                # Extract nutrients and values: "Energy: 1783kJ" or "Protein 13.8g"
                 nutrient_pattern = r'([\w\s•-]+?):?\s+([\d\.]+\s*[kKjJgGmM]+)'
                 nutrients_100 = re.findall(nutrient_pattern, per_100)
                 nutrients_serving = re.findall(nutrient_pattern, per_serving)
 
-                # Combine into a map for the table
-                table_data = {} # { nutrient_name: [val_100, val_serving] }
+                table_data = {}
                 for n_name, val in nutrients_100:
                     n_name = n_name.strip().replace('• ', '')
                     if n_name.lower() in ['information', 'nutritional']: continue
@@ -232,7 +268,6 @@ async def scrape_product(page, url: str) -> bool:
                         nutrition_md += f"| {n} | {vals[0]} | {vals[1]} |\n"
 
             if not nutrition_md:
-                # Fallback to simple list if regex fails or no table-like data found
                 lines = [l.strip() for l in raw_nut.split('\n') if l.strip()]
                 if lines:
                     nutrition_md = "\n## Nutrition Information\n" + "\n".join([f"- {l}" for l in lines])
@@ -271,15 +306,26 @@ async def main():
     parser = argparse.ArgumentParser(description="Shoprite Product Scraper")
     parser.add_argument("--category", type=str, default="All-Departments", help="Category to scrape")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of products")
+    parser.add_argument("--headless", action="store_true", default=False,
+                        help="Run browser in headless mode (default: False for local, set True for CI)")
     args = parser.parse_args()
 
     cat_url = "https://www.shoprite.co.za/c-2256/All-Departments" if args.category == "All-Departments" else f"https://www.shoprite.co.za/c/{args.category}"
     if args.category.startswith("http"): cat_url = args.category
 
+    logger.info(f"Running in {'headless' if args.headless else 'headed'} mode")
+
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
-        page = await context.new_page()
+        browser = await p.chromium.launch(
+            headless=args.headless,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+            ]
+        )
+        context = await get_hardened_context(browser, headless=args.headless)
+        page = await get_stealthy_page(context)
 
         logger.info(f"Fetching category page: {cat_url}")
         try:
@@ -307,10 +353,8 @@ async def main():
 
             product_links = await page.evaluate("""() => {
                 const links = new Set();
-                // Broaden search: look for any links containing /p/ or within product grid containers
                 document.querySelectorAll('a[href*="/p/"]').forEach(a => links.add(a.href));
 
-                // Fallback for different structures
                 if (links.size === 0) {
                    document.querySelectorAll('.product-item a, .item-product a').forEach(a => {
                        if (a.href && !a.href.includes('#')) links.add(a.href);
@@ -322,7 +366,6 @@ async def main():
             if len(product_links) == 0:
                 logger.warning(f"No product links found. Total <a> tags on page: {page_info['linkCount']}")
                 logger.debug(f"Page HTML Snippet: {page_info['htmlSnippet']}")
-                # Take a debug screenshot
                 screenshot_path = f".rokct/agent/logs/category_debug_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
                 await page.screenshot(path=screenshot_path)
                 logger.info(f"Saved debug screenshot to {screenshot_path}")

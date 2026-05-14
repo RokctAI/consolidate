@@ -6,9 +6,8 @@ import re
 from typing import Optional, Dict
 from playwright.async_api import async_playwright
 
-# Add current directory to path so we can import from shoprite_scraper
 sys.path.append(os.path.dirname(__file__))
-from shoprite_scraper import extract_price_from_page, JS_PRICE_EXTRACTION
+from shoprite_scraper import extract_price_from_page, JS_PRICE_EXTRACTION, get_hardened_context, get_stealthy_page
 
 # Setup logging
 os.makedirs(".rokct/agent/logs", exist_ok=True)
@@ -66,9 +65,16 @@ async def update_price(page, card_path: str):
 
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
-        page = await context.new_page()
+        browser = await p.chromium.launch(
+            headless=True,  # price updates are safe to run headless once initial scrape works
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+            ]
+        )
+        context = await get_hardened_context(browser)
+        page = await get_stealthy_page(context)
 
         products_root = "products"
         if not os.path.exists(products_root):
