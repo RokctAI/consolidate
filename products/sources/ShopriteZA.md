@@ -1,0 +1,8 @@
+- **Source**: Shoprite ZA
+- **Name**: Shoprite/Checkers South Africa
+- **Type**: Scraper (Playwright)
+- **URL**: https://www.shoprite.co.za/c-2256/All-Departments
+- **Is API**: false
+- **Flag**: ZA
+- **Status**: ACTIVE
+- **Update Frequency**: Weekly

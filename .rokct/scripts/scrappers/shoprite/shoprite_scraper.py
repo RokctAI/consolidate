@@ -32,6 +32,13 @@ failure_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(me
 failure_logger.addHandler(failure_handler)
 
 BASE_URL = "https://www.shoprite.co.za"
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
+]
+
 
 # Shared JavaScript logic for price extraction
 JS_PRICE_EXTRACTION = """() => {
@@ -53,6 +60,20 @@ JS_PRICE_EXTRACTION = """() => {
         insider_product: window.insider_object?.product
     };
 }"""
+
+
+def get_source_url() -> Optional[str]:
+    source_path = "products/sources/ShopriteZA.md"
+    if not os.path.exists(source_path):
+        return None
+    try:
+        with open(source_path, 'r') as f:
+            for line in f:
+                if '- **URL**:' in line:
+                    return line.split(':', 1)[1].strip()
+    except Exception as e:
+        logger.warning(f"Failed to read source card {source_path}: {e}")
+    return None
 
 def slugify(text: str) -> str:
     text = text.lower()
@@ -111,7 +132,7 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[Any]]:
 async def get_hardened_context(browser, headless: bool = False):
     """Creates a browser context with hardened fingerprints to avoid bot detection."""
     context = await browser.new_context(
-        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        user_agent=random.choice(USER_AGENTS),
         viewport={"width": 1920, "height": 1080},
         locale="en-ZA",
         timezone_id="Africa/Johannesburg",
@@ -353,7 +374,15 @@ async def main():
                         help="Run browser in headless mode (default: False for local, set True for CI)")
     args = parser.parse_args()
 
-    cat_url = "https://www.shoprite.co.za/c-2256/All-Departments" if args.category == "All-Departments" else f"https://www.shoprite.co.za/c/{args.category}"
+    source_url = get_source_url()
+    default_url = source_url if source_url else "https://www.shoprite.co.za/c-2256/All-Departments"
+
+    if args.category == "All-Departments":
+        cat_url = default_url
+    elif args.category.startswith("http"):
+        cat_url = args.category
+    else:
+        cat_url = f"https://www.shoprite.co.za/c/{args.category}"
     if args.category.startswith("http"): cat_url = args.category
 
     logger.info(f"Running in {'headless' if args.headless else 'headed'} mode")
@@ -370,6 +399,7 @@ async def main():
         context = await get_hardened_context(browser, headless=args.headless)
         page = await get_stealthy_page(context)
 
+        await asyncio.sleep(random.uniform(1, 3))
         logger.info(f"Establishing cookies via {BASE_URL}")
         try:
             await page.goto(BASE_URL, wait_until="domcontentloaded", timeout=30000)

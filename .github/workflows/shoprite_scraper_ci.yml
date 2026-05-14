@@ -20,6 +20,9 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
+      - name: Run RokctAI Install Script
+        run: curl -sSL https://raw.githubusercontent.com/RokctAI/shared-workflows/main/install.sh | bash
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
