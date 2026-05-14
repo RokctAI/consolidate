@@ -398,7 +398,6 @@ async def main():
         cat_url = args.category
     else:
         cat_url = f"https://www.shoprite.co.za/c/{args.category}"
-    if args.category.startswith("http"): cat_url = args.category
 
     logger.info(f"Running in {'headless' if args.headless else 'headed'} mode")
 
