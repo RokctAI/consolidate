@@ -234,7 +234,7 @@ def publish():
             # a category name might be reused but represent different things.
             # However, the requirement asks for unique categories with counts.
             # If a name is repeated, we'll take the max count or sum them?
-            # Given Shoprite's structure, a name is likely unique to its branch,
+            # Given the source's structure, a name is likely unique to its branch,
             # but if it's not, summing counts for the same "name" across different
             # branches might be what's expected for a "flat list".
             categories_map[name] = categories_map.get(name, 0) + node["count"]
