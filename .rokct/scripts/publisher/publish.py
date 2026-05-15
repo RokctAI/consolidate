@@ -219,5 +219,35 @@ def publish():
     with open(os.path.join(published_dir, "meta.json"), 'w', encoding='utf-8') as f:
         json.dump(meta, f, indent=2)
 
+    # Write platform_products.json
+    platform_products = [p for p in all_products if p.get("is_platform")]
+    with open(os.path.join(published_dir, "platform_products.json"), 'w', encoding='utf-8') as f:
+        json.dump(platform_products, f, indent=2)
+
+    # Write categories.json as a flat list of unique categories
+    categories_map = {}
+
+    def traverse_categories(nodes):
+        for node in nodes:
+            name = node["name"]
+            # We don't sum counts here because in a true hierarchy,
+            # a category name might be reused but represent different things.
+            # However, the requirement asks for unique categories with counts.
+            # If a name is repeated, we'll take the max count or sum them?
+            # Given Shoprite's structure, a name is likely unique to its branch,
+            # but if it's not, summing counts for the same "name" across different
+            # branches might be what's expected for a "flat list".
+            categories_map[name] = categories_map.get(name, 0) + node["count"]
+            traverse_categories(node.get("children", []))
+
+    traverse_categories(formatted_tree)
+
+    # Convert map to sorted list
+    flat_categories = [{"name": k, "count": v} for k, v in categories_map.items()]
+    flat_categories.sort(key=lambda x: x["name"])
+
+    with open(os.path.join(published_dir, "categories.json"), 'w', encoding='utf-8') as f:
+        json.dump(flat_categories, f, indent=2)
+
 if __name__ == "__main__":
     publish()

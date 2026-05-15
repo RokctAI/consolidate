@@ -13,6 +13,48 @@
           "count": 17,
           "children": [
             {
+              "name": "Fresh-Food",
+              "count": 4,
+              "children": [
+                {
+                  "name": "Fresh-Meat-and-Poultry",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "Milk%2C-Butter-and-Eggs",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Fresh-Vegetables",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Food-Cupboard",
+              "count": 7,
+              "children": [
+                {
+                  "name": "Table-Condiments-and-Dressings",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Cooking-Ingredients",
+                  "count": 5,
+                  "children": []
+                },
+                {
+                  "name": "Spreads%2C-Honey-and-Preserves",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
               "name": "Bakery",
               "count": 5,
               "children": [
@@ -24,53 +66,11 @@
               ]
             },
             {
-              "name": "Food-Cupboard",
-              "count": 7,
-              "children": [
-                {
-                  "name": "Cooking-Ingredients",
-                  "count": 5,
-                  "children": []
-                },
-                {
-                  "name": "Spreads%2C-Honey-and-Preserves",
-                  "count": 1,
-                  "children": []
-                },
-                {
-                  "name": "Table-Condiments-and-Dressings",
-                  "count": 1,
-                  "children": []
-                }
-              ]
-            },
-            {
               "name": "Frozen-Food",
               "count": 1,
               "children": [
                 {
                   "name": "Frozen-Meat-and-Poultry",
-                  "count": 1,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "name": "Fresh-Food",
-              "count": 4,
-              "children": [
-                {
-                  "name": "Milk%2C-Butter-and-Eggs",
-                  "count": 1,
-                  "children": []
-                },
-                {
-                  "name": "Fresh-Meat-and-Poultry",
-                  "count": 2,
-                  "children": []
-                },
-                {
-                  "name": "Fresh-Vegetables",
                   "count": 1,
                   "children": []
                 }
