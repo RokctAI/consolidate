@@ -2,7 +2,7 @@
   "total": 20,
   "product_count": 20,
   "content_hash": "5227bd3d7fd4866835a84bb1cbd719c4",
-  "last_updated": "2026-05-15T13:06:40.395827",
+  "last_updated": "2026-05-15T14:43:23.352431",
   "category_tree": [
     {
       "name": "All-Departments",
@@ -12,48 +12,6 @@
           "name": "Food",
           "count": 17,
           "children": [
-            {
-              "name": "Fresh-Food",
-              "count": 4,
-              "children": [
-                {
-                  "name": "Fresh-Meat-and-Poultry",
-                  "count": 2,
-                  "children": []
-                },
-                {
-                  "name": "Milk%2C-Butter-and-Eggs",
-                  "count": 1,
-                  "children": []
-                },
-                {
-                  "name": "Fresh-Vegetables",
-                  "count": 1,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "name": "Food-Cupboard",
-              "count": 7,
-              "children": [
-                {
-                  "name": "Table-Condiments-and-Dressings",
-                  "count": 1,
-                  "children": []
-                },
-                {
-                  "name": "Cooking-Ingredients",
-                  "count": 5,
-                  "children": []
-                },
-                {
-                  "name": "Spreads%2C-Honey-and-Preserves",
-                  "count": 1,
-                  "children": []
-                }
-              ]
-            },
             {
               "name": "Bakery",
               "count": 5,
@@ -66,11 +24,53 @@
               ]
             },
             {
+              "name": "Food-Cupboard",
+              "count": 7,
+              "children": [
+                {
+                  "name": "Cooking-Ingredients",
+                  "count": 5,
+                  "children": []
+                },
+                {
+                  "name": "Spreads%2C-Honey-and-Preserves",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Table-Condiments-and-Dressings",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
               "name": "Frozen-Food",
               "count": 1,
               "children": [
                 {
                   "name": "Frozen-Meat-and-Poultry",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Fresh-Food",
+              "count": 4,
+              "children": [
+                {
+                  "name": "Milk%2C-Butter-and-Eggs",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Fresh-Meat-and-Poultry",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "Fresh-Vegetables",
                   "count": 1,
                   "children": []
                 }
