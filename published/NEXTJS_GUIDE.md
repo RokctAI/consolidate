@@ -1,6 +1,6 @@
-# Architecture Guide: Consuming the Shoprite API via Frappe
+# Architecture Guide: Consuming the PriceGrid API via Frappe
 
-This repository serves as the **Data Source** for Shoprite product information. It implements a static publication pipeline that is consumed by a Frappe backend, which in turn serves the data to Next.js and Flutter clients.
+This repository serves as the **Data Source** for PriceGrid product information. It implements a static publication pipeline that is consumed by a Frappe backend, which in turn serves the data to Next.js and Flutter clients.
 
 > **IMPORTANT**: Clients (Next.js, Flutter, etc.) should **never** fetch data directly from this GitHub repository. Always use the Frappe REST API.
 
@@ -34,11 +34,11 @@ The Frappe backend maintains a local mirror of the product data using the follow
 ## REST Endpoints (Frappe)
 
 ### 1. Product Listing
-- **URL**: `/api/resource/Shoprite Product`
+- **URL**: `/api/resource/PriceGrid Product`
 - **Fields**: `name` (slug), `product_id`, `item_name`, `current_price`, `category`, `thumbnail`
 
 ### 2. Product Detail
-- **URL**: `/api/resource/Shoprite Product/{slug}`
+- **URL**: `/api/resource/PriceGrid Product/{slug}`
 - **Purpose**: Returns the full product data including nutrition, specifications, and images.
 
 ---
@@ -54,13 +54,13 @@ async function getProducts(category?: string) {
     fields: JSON.stringify(["name", "item_name", "current_price", "thumbnail"]),
     filters: category ? JSON.stringify([["category", "=", category]]) : "[]"
   });
-  const res = await fetch(`${FRAPPE_URL}/api/resource/Shoprite Product?${params}`);
+  const res = await fetch(`${FRAPPE_URL}/api/resource/PriceGrid Product?${params}`);
   return res.json();
 }
 
 // Fetching a Single Product Detail
 async function getProductDetail(slug: string) {
-  const res = await fetch(`${FRAPPE_URL}/api/resource/Shoprite Product/${slug}`);
+  const res = await fetch(`${FRAPPE_URL}/api/resource/PriceGrid Product/${slug}`);
   return res.json();
 }
 
@@ -69,7 +69,7 @@ async function getProductByBarcode(barcode: string) {
   const params = new URLSearchParams({
     filters: JSON.stringify([["barcode", "=", barcode]])
   });
-  const res = await fetch(`${FRAPPE_URL}/api/resource/Shoprite Product?${params}`);
+  const res = await fetch(`${FRAPPE_URL}/api/resource/PriceGrid Product?${params}`);
   return res.json();
 }
 ```
@@ -111,7 +111,7 @@ The data shape remains consistent with the publication format of this repository
 
 Images are stored in the Frappe File Manager during the sync process.
 
-- **Storage**: Images are downloaded from GitHub and attached to the `Shoprite Product` document.
+- **Storage**: Images are downloaded from GitHub and attached to the `PriceGrid Product` document.
 - **URL Pattern**: `/files/{filename}.jpg`
 - **Consumption**: Next.js and Flutter clients should use the `thumbnail` or `images` fields directly as relative paths from the Frappe base URL.
 

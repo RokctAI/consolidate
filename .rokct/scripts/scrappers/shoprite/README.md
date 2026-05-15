@@ -1,16 +1,16 @@
-# Shoprite Product Scraper
+# PriceGrid Product Scraper
 
-This directory contains scripts to scrape product information from the Shoprite website (shoprite.co.za).
+This directory contains scripts to scrape product information from the PriceGrid website (shoprite.co.za).
 
 ## Scripts
 
-### 1. `shoprite_scraper.py`
+### 1. `scraper.py`
 
 The main scraper script that fetches product details from category pages.
 
 **Usage:**
 ```bash
-python3 .rokct/scripts/scrappers/shoprite/shoprite_scraper.py [args]
+python3 .rokct/scripts/scrappers/shoprite/scraper.py [args]
 ```
 
 **Arguments:**
@@ -37,7 +37,7 @@ python3 .rokct/scripts/scrappers/shoprite/update_prices.py
 - Iterates through all `.md` cards in the `products/` directory.
 - Fetches the current price and was-price from the source URL.
 - Updates the markdown card if the price has changed.
-- Reuses the price extraction logic from `shoprite_scraper.py`.
+- Reuses the price extraction logic from `scraper.py`.
 
 ## Output Structure
 

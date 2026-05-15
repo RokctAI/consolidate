@@ -9,7 +9,7 @@ from typing import Optional, Dict
 from playwright.async_api import async_playwright
 
 sys.path.append(os.path.dirname(__file__))
-from shoprite_scraper import extract_price_from_page, JS_PRICE_EXTRACTION, get_hardened_context, get_stealthy_page
+from scraper import extract_price_from_page, JS_PRICE_EXTRACTION, get_hardened_context, get_stealthy_page
 
 # Setup logging
 os.makedirs(".rokct/agent/logs", exist_ok=True)
@@ -152,7 +152,7 @@ async def update_price(context, card_path: str):
         if page: await page.close()
 
 async def main():
-    parser = argparse.ArgumentParser(description="Maintain Shoprite product data.")
+    parser = argparse.ArgumentParser(description="Maintain PriceGrid product data.")
     parser.add_argument("--images-only", action="store_true", help="Only perform image maintenance, skip price updates.")
     args = parser.parse_args()
 
