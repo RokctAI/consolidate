@@ -1,0 +1,81 @@
+{
+  "id": "potatoes-7kg",
+  "product_id": "10147186",
+  "name": "Potatoes 7kg",
+  "category": "Fresh-Vegetables",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Fresh-Food",
+    "Fresh-Vegetables"
+  ],
+  "current_price": "59.99",
+  "was_price": null,
+  "description": "Stock up on a versatile kitchen staple with Freshmark Potatoes, packed in a sturdy and easy-to-carry potato pocket. Suitable for boiling, roasting, mashing or baking, this pack offers convenient storage and freshness for family meals, gatherings or regular everyday use.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Ingredients  Potatoes   Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "318kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "16g",
+      "per_serving": "10g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "0.7g",
+      "per_serving": "0.4g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "0.1g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "1g Protein",
+      "per_100g": "1.5g",
+      "per_serving": "0.9g"
+    },
+    {
+      "nutrient": "Dietary fibre",
+      "per_100g": "1.5g",
+      "per_serving": "0.9g"
+    },
+    {
+      "nutrient": "Total sodium",
+      "per_100g": "2mg",
+      "per_serving": "1g"
+    },
+    {
+      "nutrient": "Energy",
+      "per_100g": "",
+      "per_serving": "191kJ"
+    },
+    {
+      "nutrient": "Serving Size",
+      "per_100g": "",
+      "per_serving": "60g"
+    }
+  ],
+  "images": [
+    "products/potatoes-7kg/images/potatoes-7kg_0.jpg",
+    "products/potatoes-7kg/images/potatoes-7kg_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Vegetables/Potatoes-7kg/p/10147186EA",
+  "scraped_date": "2026-05-14"
+}

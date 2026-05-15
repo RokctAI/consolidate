@@ -1,0 +1,30 @@
+{
+  "id": "carling-black-label-beer-bottle-750ml",
+  "product_id": "10125600",
+  "name": "Carling Black Label Beer Bottle 750ml",
+  "category": "Beer",
+  "category_path": [
+    "All-Departments",
+    "Drinks",
+    "Beer-and-Cider",
+    "Beer"
+  ],
+  "current_price": "22.99",
+  "was_price": null,
+  "description": "Here's a beer that is a household name in South Africa. For decades this brand\u00a0has\u00a0been proud to honour and reward South African champions. Its no wonder then, that its accolades and awards just keep coming.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [],
+  "images": [
+    "products/carling-black-label-beer-bottle-750ml/images/carling-black-label-beer-bottle-750ml_0.jpg",
+    "products/carling-black-label-beer-bottle-750ml/images/carling-black-label-beer-bottle-750ml_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Drinks/Beer-and-Cider/Beer/Carling-Black-Label-Beer-Bottle-750ml/p/10125600EA",
+  "scraped_date": "2026-05-14"
+}

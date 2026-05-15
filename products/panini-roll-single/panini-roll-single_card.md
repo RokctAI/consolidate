@@ -17,3 +17,4 @@ Fresh Bakery Panini Roll boasts a soft interior and golden crust, ideal for sand
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Panini-Roll-Single/p/10397287EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

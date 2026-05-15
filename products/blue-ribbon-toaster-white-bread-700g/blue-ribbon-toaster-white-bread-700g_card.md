@@ -33,3 +33,4 @@ Combining taste and convenience for everyday meals or gatherings, Blue Ribbon To
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Toaster-White-Bread-700g/p/10456482EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

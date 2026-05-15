@@ -14,3 +14,4 @@ Caress Regular Maxi Sanitary Pads have an absorbent core with anti-leak channels
 - **Source**: https://www.shoprite.co.za/All-Departments/Toiletries/Sanitary-Protection/Sanitary-Pads-and-Panty-Liners/Caress-Regular-Maxi-Sanitary-Pads-8-Pack/p/10730757EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

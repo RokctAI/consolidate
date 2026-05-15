@@ -28,3 +28,4 @@ Craft authentic Indian Chicken Tikka effortlessly with Rajah's 15g pure spice sa
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Chicken-Tikka-Cook-In-Sauce-Sachet-15g/p/10641194EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

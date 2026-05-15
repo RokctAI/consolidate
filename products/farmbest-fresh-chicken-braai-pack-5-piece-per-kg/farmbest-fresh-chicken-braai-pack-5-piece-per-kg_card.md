@@ -14,3 +14,4 @@ Savour the robust flavour of Farmbest Fresh Chicken Braai Pack. These 5 chunky, 
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Meat-and-Poultry/Farmbest-Fresh-Chicken-Braai-Pack-5-Piece-Per-kg/p/10357568KG
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

@@ -1,0 +1,491 @@
+{
+  "total": 20,
+  "product_count": 20,
+  "content_hash": "5227bd3d7fd4866835a84bb1cbd719c4",
+  "last_updated": "2026-05-15T11:32:07.669798",
+  "category_tree": [
+    {
+      "name": "All-Departments",
+      "count": 20,
+      "children": [
+        {
+          "name": "Food",
+          "count": 17,
+          "children": [
+            {
+              "name": "Fresh-Food",
+              "count": 4,
+              "children": [
+                {
+                  "name": "Fresh-Meat-and-Poultry",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "Milk%2C-Butter-and-Eggs",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Fresh-Vegetables",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Food-Cupboard",
+              "count": 7,
+              "children": [
+                {
+                  "name": "Table-Condiments-and-Dressings",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "Cooking-Ingredients",
+                  "count": 5,
+                  "children": []
+                },
+                {
+                  "name": "Spreads%2C-Honey-and-Preserves",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Bakery",
+              "count": 5,
+              "children": [
+                {
+                  "name": "Bread-and-Rolls",
+                  "count": 5,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Frozen-Food",
+              "count": 1,
+              "children": [
+                {
+                  "name": "Frozen-Meat-and-Poultry",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "count": 2,
+          "children": [
+            {
+              "name": "Soft-Drinks",
+              "count": 1,
+              "children": [
+                {
+                  "name": "Cola",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "Beer-and-Cider",
+              "count": 1,
+              "children": [
+                {
+                  "name": "Beer",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Toiletries",
+          "count": 1,
+          "children": [
+            {
+              "name": "Sanitary-Protection",
+              "count": 1,
+              "children": [
+                {
+                  "name": "Sanitary-Pads-and-Panty-Liners",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "blue-ribbon-sliced-white-bread-700g",
+      "product_id": "10136370",
+      "name": "Blue Ribbon Sliced White Bread 700g",
+      "category": "Bread-and-Rolls",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Bakery",
+        "Bread-and-Rolls"
+      ],
+      "current_price": "19.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_0.jpg"
+    },
+    {
+      "id": "blue-ribbon-toaster-white-bread-700g",
+      "product_id": "10456482",
+      "name": "Blue Ribbon Toaster White Bread 700g",
+      "category": "Bread-and-Rolls",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Bakery",
+        "Bread-and-Rolls"
+      ],
+      "current_price": "19.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/blue-ribbon-toaster-white-bread-700g/images/blue-ribbon-toaster-white-bread-700g_0.jpg"
+    },
+    {
+      "id": "brown-bread-600g",
+      "product_id": "10810522",
+      "name": "Brown Bread 600g",
+      "category": "Bread-and-Rolls",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Bakery",
+        "Bread-and-Rolls"
+      ],
+      "current_price": "11.99",
+      "was_price": null,
+      "barcode": "6001224497410",
+      "brand": "Bakery",
+      "is_platform": false,
+      "thumbnail": "products/brown-bread-600g/images/brown-bread-600g_0.jpg"
+    },
+    {
+      "id": "caress-regular-maxi-sanitary-pads-8-pack",
+      "product_id": "10730757",
+      "name": "Caress Regular Maxi Sanitary Pads 8 Pack",
+      "category": "Sanitary-Pads-and-Panty-Liners",
+      "category_path": [
+        "All-Departments",
+        "Toiletries",
+        "Sanitary-Protection",
+        "Sanitary-Pads-and-Panty-Liners"
+      ],
+      "current_price": "5.00",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/caress-regular-maxi-sanitary-pads-8-pack/images/caress-regular-maxi-sanitary-pads-8-pack_0.jpg"
+    },
+    {
+      "id": "carling-black-label-beer-bottle-750ml",
+      "product_id": "10125600",
+      "name": "Carling Black Label Beer Bottle 750ml",
+      "category": "Beer",
+      "category_path": [
+        "All-Departments",
+        "Drinks",
+        "Beer-and-Cider",
+        "Beer"
+      ],
+      "current_price": "22.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/carling-black-label-beer-bottle-750ml/images/carling-black-label-beer-bottle-750ml_0.jpg"
+    },
+    {
+      "id": "coca-cola-original-taste-less-sugar-soft-drink-2l",
+      "product_id": "10136669",
+      "name": "Coca-Cola Original Taste Less Sugar Soft Drink 2L",
+      "category": "Cola",
+      "category_path": [
+        "All-Departments",
+        "Drinks",
+        "Soft-Drinks",
+        "Cola"
+      ],
+      "current_price": "28.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/coca-cola-original-taste-less-sugar-soft-drink-2l/images/coca-cola-original-taste-less-sugar-soft-drink-2l_0.jpg"
+    },
+    {
+      "id": "county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg",
+      "product_id": "10538316",
+      "name": "County Fair Frozen Chicken Mixed Portions With Brine Based Mixture 5kg",
+      "category": "Frozen-Meat-and-Poultry",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Frozen-Food",
+        "Frozen-Meat-and-Poultry"
+      ],
+      "current_price": "209.99",
+      "was_price": "239.99",
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg/images/county-fair-frozen-chicken-mixed-portions-with-brine-based-mixture-5kg_0.jpg"
+    },
+    {
+      "id": "darling-fresh-full-cream-milk-sachet-1l",
+      "product_id": "10124889",
+      "name": "Darling Fresh Full Cream Milk Sachet 1L",
+      "category": "Milk%2C-Butter-and-Eggs",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Fresh-Food",
+        "Milk%2C-Butter-and-Eggs"
+      ],
+      "current_price": "15.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/darling-fresh-full-cream-milk-sachet-1l/images/darling-fresh-full-cream-milk-sachet-1l_0.jpg"
+    },
+    {
+      "id": "easy-crispy-seafood-coating-mix-200g",
+      "product_id": "10602244",
+      "name": "Easy Crispy Seafood Coating Mix 200g",
+      "category": "Cooking-Ingredients",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Cooking-Ingredients"
+      ],
+      "current_price": "12.00",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/easy-crispy-seafood-coating-mix-200g/images/easy-crispy-seafood-coating-mix-200g_0.jpg"
+    },
+    {
+      "id": "farmbest-fresh-chicken-braai-pack-5-piece-per-kg",
+      "product_id": "10357568",
+      "name": "Farmbest Fresh Chicken Braai Pack 5 Piece Per kg",
+      "category": "Fresh-Meat-and-Poultry",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Fresh-Food",
+        "Fresh-Meat-and-Poultry"
+      ],
+      "current_price": "59.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/farmbest-fresh-chicken-braai-pack-5-piece-per-kg/images/farmbest-fresh-chicken-braai-pack-5-piece-per-kg_0.jpg"
+    },
+    {
+      "id": "farmbest-fresh-chicken-braai-pack-650g",
+      "product_id": "10874870",
+      "name": "Farmbest Fresh Chicken Braai Pack 650g",
+      "category": "Fresh-Meat-and-Poultry",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Fresh-Food",
+        "Fresh-Meat-and-Poultry"
+      ],
+      "current_price": "38.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/farmbest-fresh-chicken-braai-pack-650g/images/farmbest-fresh-chicken-braai-pack-650g_0.jpg"
+    },
+    {
+      "id": "knorr-balsamic-amp-pineapple-salad-dressing-340ml",
+      "product_id": "10618040",
+      "name": "Knorr Balsamic &amp; Pineapple Salad Dressing 340ml",
+      "category": "Table-Condiments-and-Dressings",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Table-Condiments-and-Dressings"
+      ],
+      "current_price": "11.00",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/knorr-balsamic-amp-pineapple-salad-dressing-340ml/images/knorr-balsamic-amp-pineapple-salad-dressing-340ml_0.jpg"
+    },
+    {
+      "id": "panini-roll-single",
+      "product_id": "10397287",
+      "name": "Panini Roll  Single",
+      "category": "Bread-and-Rolls",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Bakery",
+        "Bread-and-Rolls"
+      ],
+      "current_price": "4.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/panini-roll-single/images/panini-roll-single_0.jpg"
+    },
+    {
+      "id": "potatoes-7kg",
+      "product_id": "10147186",
+      "name": "Potatoes 7kg",
+      "category": "Fresh-Vegetables",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Fresh-Food",
+        "Fresh-Vegetables"
+      ],
+      "current_price": "59.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/potatoes-7kg/images/potatoes-7kg_0.jpg"
+    },
+    {
+      "id": "rajah-beef-madras-cook-in-sauce-sachet-15g",
+      "product_id": "10641192",
+      "name": "Rajah Beef Madras Cook-In-Sauce Sachet 15g",
+      "category": "Cooking-Ingredients",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Cooking-Ingredients"
+      ],
+      "current_price": "10.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/rajah-beef-madras-cook-in-sauce-sachet-15g/images/rajah-beef-madras-cook-in-sauce-sachet-15g_0.jpg"
+    },
+    {
+      "id": "rajah-chicken-tikka-cook-in-sauce-sachet-15g",
+      "product_id": "10641194",
+      "name": "Rajah Chicken Tikka Cook-In-Sauce Sachet 15g",
+      "category": "Cooking-Ingredients",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Cooking-Ingredients"
+      ],
+      "current_price": "10.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/rajah-chicken-tikka-cook-in-sauce-sachet-15g/images/rajah-chicken-tikka-cook-in-sauce-sachet-15g_0.jpg"
+    },
+    {
+      "id": "red-bicycle-speculoos-crunchy-cookie-spread-350g",
+      "product_id": "10532276",
+      "name": "Red Bicycle Speculoos Crunchy Cookie Spread 350g",
+      "category": "Spreads%2C-Honey-and-Preserves",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Spreads%2C-Honey-and-Preserves"
+      ],
+      "current_price": "20.00",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/red-bicycle-speculoos-crunchy-cookie-spread-350g/images/red-bicycle-speculoos-crunchy-cookie-spread-350g_0.jpg"
+    },
+    {
+      "id": "robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g",
+      "product_id": "10641181",
+      "name": "Robertsons Indian Spicy Lentil Dhal Cook-In-Sauce 48g",
+      "category": "Cooking-Ingredients",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Cooking-Ingredients"
+      ],
+      "current_price": "10.00",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g/images/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g_0.jpg"
+    },
+    {
+      "id": "royco-stew-mix-for-chicken-200g",
+      "product_id": "10498612",
+      "name": "Royco Stew Mix For Chicken 200g",
+      "category": "Cooking-Ingredients",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Food-Cupboard",
+        "Cooking-Ingredients"
+      ],
+      "current_price": "18.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/royco-stew-mix-for-chicken-200g/images/royco-stew-mix-for-chicken-200g_0.jpg"
+    },
+    {
+      "id": "standard-white-bread-600g",
+      "product_id": "10141145",
+      "name": "Standard White Bread 600g",
+      "category": "Bread-and-Rolls",
+      "category_path": [
+        "All-Departments",
+        "Food",
+        "Bakery",
+        "Bread-and-Rolls"
+      ],
+      "current_price": "8.99",
+      "was_price": null,
+      "barcode": null,
+      "brand": null,
+      "is_platform": false,
+      "thumbnail": "products/standard-white-bread-600g/images/standard-white-bread-600g_0.jpg"
+    }
+  ]
+}

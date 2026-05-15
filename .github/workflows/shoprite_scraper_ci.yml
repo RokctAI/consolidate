@@ -41,13 +41,20 @@ jobs:
         env:
           PYTHONPATH: .
 
+      - name: Publish Static Data
+        run: |
+          python .rokct/scripts/publisher/publish.py
+        env:
+          PYTHONPATH: .
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if [ -d "products" ]; then
             git add products/
-            git commit -m "chore: auto-update scraped products [skip ci]" || echo "No changes to commit"
+            git add published/
+            git commit -m "chore: auto-update scraped products and static data [skip ci]" || echo "No changes to commit"
             git push
           else
             echo "No products scraped, skipping commit."

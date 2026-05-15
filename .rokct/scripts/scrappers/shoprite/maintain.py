@@ -67,6 +67,26 @@ def maintain_images():
                     if not os.path.exists(os.path.join(product_dir, listed_image)):
                         logger.warning(f"Listed image not found on disk: {listed_image} (in {card_path})")
 
+    # Second pass: Ensure Is Platform field exists in all cards
+    logger.info("Ensuring 'Is Platform' field exists in all cards...")
+    for root, dirs, files in os.walk(products_root):
+        for file in files:
+            if file.endswith("_card.md"):
+                card_path = os.path.join(root, file)
+                with open(card_path, 'r') as f:
+                    content = f.read()
+
+                if "- **Is Platform**:" not in content:
+                    # Ensure it's added to the ## Meta section
+                    if "## Meta" in content:
+                        new_content = content.replace("## Meta", "## Meta\n- **Is Platform**: false")
+                    else:
+                        new_content = content.rstrip() + "\n\n## Meta\n- **Is Platform**: false\n"
+
+                    with open(card_path, 'w', encoding='utf-8') as f:
+                        f.write(new_content)
+                    logger.info(f"Added 'Is Platform: false' to {card_path}")
+
     logger.info("Image maintenance complete.")
 
 async def update_price(context, card_path: str):
@@ -83,30 +103,16 @@ async def update_price(context, card_path: str):
 
     page = None
     try:
-        response = None
-        for attempt in range(3):
-            if page: await page.close()
-            page = await get_stealthy_page(context)
-            try:
-                response = await page.goto(url, wait_until="domcontentloaded", timeout=60000)
-                if response and response.status == 200:
-                    break
+        page = await get_stealthy_page(context)
+        try:
+            response = await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            status = response.status if response else 'No Response'
 
-                status = response.status if response else 'No Response'
-                logger.warning(f"Attempt {attempt + 1} for {url} failed: {status}")
-
-                if status == 403:
-                    cooldown = random.uniform(30, 60)
-                    logger.warning(f"403 Forbidden detected. Cooling down for {cooldown:.1f}s...")
-                    await asyncio.sleep(cooldown)
-                else:
-                    await asyncio.sleep(random.uniform(2, 5))
-            except Exception as e:
-                logger.warning(f"Attempt {attempt + 1} for {url} exception: {e}")
-                await asyncio.sleep(random.uniform(2, 5))
-
-        if not response or response.status != 200:
-            logger.error(f"Failed to load {url} after 3 attempts")
+            if not response or status != 200:
+                logger.error(f"Failed to load {url} (Status: {status}). Skipping product.")
+                return
+        except Exception as e:
+            logger.error(f"Exception loading {url}: {e}")
             return
 
         await page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)");

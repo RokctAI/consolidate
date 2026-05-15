@@ -1,0 +1,81 @@
+{
+  "id": "rajah-chicken-tikka-cook-in-sauce-sachet-15g",
+  "product_id": "10641194",
+  "name": "Rajah Chicken Tikka Cook-In-Sauce Sachet 15g",
+  "category": "Cooking-Ingredients",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Food-Cupboard",
+    "Cooking-Ingredients"
+  ],
+  "current_price": "10.99",
+  "was_price": null,
+  "description": "Craft authentic Indian Chicken Tikka effortlessly with Rajah's 15g pure spice sachet. This vibrant blend instantly transforms four servings into a trendy, flavourful meal for family and friends.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "1792kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "50g",
+      "per_serving": "3g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "5.0g",
+      "per_serving": "0.2g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "17.6g",
+      "per_serving": "0.9g"
+    },
+    {
+      "nutrient": "Of which saturated fat",
+      "per_100g": "4.2g",
+      "per_serving": "0.2g"
+    },
+    {
+      "nutrient": "Protein",
+      "per_100g": "16.9g",
+      "per_serving": "0.8g"
+    },
+    {
+      "nutrient": "Dietary fibre",
+      "per_100g": "43.3g",
+      "per_serving": "2.2g"
+    },
+    {
+      "nutrient": "Total sodium",
+      "per_100g": "147mg",
+      "per_serving": "7g"
+    },
+    {
+      "nutrient": "Energy",
+      "per_100g": "",
+      "per_serving": "90kJ"
+    }
+  ],
+  "images": [
+    "products/rajah-chicken-tikka-cook-in-sauce-sachet-15g/images/rajah-chicken-tikka-cook-in-sauce-sachet-15g_0.jpg",
+    "products/rajah-chicken-tikka-cook-in-sauce-sachet-15g/images/rajah-chicken-tikka-cook-in-sauce-sachet-15g_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Chicken-Tikka-Cook-In-Sauce-Sachet-15g/p/10641194EA",
+  "scraped_date": "2026-05-14"
+}

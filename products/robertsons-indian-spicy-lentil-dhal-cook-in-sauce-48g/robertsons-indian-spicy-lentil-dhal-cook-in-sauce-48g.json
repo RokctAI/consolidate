@@ -1,0 +1,81 @@
+{
+  "id": "robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g",
+  "product_id": "10641181",
+  "name": "Robertsons Indian Spicy Lentil Dhal Cook-In-Sauce 48g",
+  "category": "Cooking-Ingredients",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Food-Cupboard",
+    "Cooking-Ingredients"
+  ],
+  "current_price": "10.00",
+  "was_price": null,
+  "description": "Bring the spicy aromas and enticing flavours of India together in a tasty lentil dhal dish when you keep this dry cook-in-sauce in the pantry. It includes yellow lentils and delicious spices and is quick and easy to prepare.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "1410kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "61g",
+      "per_serving": "7g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "17.1g",
+      "per_serving": "2.0g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "5.3g",
+      "per_serving": "0.6g"
+    },
+    {
+      "nutrient": "Of which saturated fat",
+      "per_100g": "1.9g",
+      "per_serving": "0.2g"
+    },
+    {
+      "nutrient": "Protein",
+      "per_100g": "8.4g",
+      "per_serving": "1.0g"
+    },
+    {
+      "nutrient": "Dietary fibre",
+      "per_100g": "6.2g",
+      "per_serving": "0.7g"
+    },
+    {
+      "nutrient": "Total sodium",
+      "per_100g": "4596mg",
+      "per_serving": "552g"
+    },
+    {
+      "nutrient": "Energy",
+      "per_100g": "",
+      "per_serving": "168kJ"
+    }
+  ],
+  "images": [
+    "products/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g/images/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g_0.jpg",
+    "products/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g/images/robertsons-indian-spicy-lentil-dhal-cook-in-sauce-48g_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Robertsons-Indian-Spicy-Lentil-Dhal-Cook-In-Sauce-48g/p/10641181EA",
+  "scraped_date": "2026-05-14"
+}

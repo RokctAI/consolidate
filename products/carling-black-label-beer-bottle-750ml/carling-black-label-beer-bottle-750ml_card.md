@@ -14,3 +14,4 @@ Here's a beer that is a household name in South Africa. For decades this brand 
 - **Source**: https://www.shoprite.co.za/All-Departments/Drinks/Beer-and-Cider/Beer/Carling-Black-Label-Beer-Bottle-750ml/p/10125600EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false
