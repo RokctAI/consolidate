@@ -69,7 +69,7 @@ def maintain_images():
 
     logger.info("Image maintenance complete.")
 
-async def update_price(page, card_path: str):
+async def update_price(context, card_path: str):
     with open(card_path, 'r') as f:
         content = f.read()
 
@@ -81,15 +81,26 @@ async def update_price(page, card_path: str):
     url = match.group(1).strip()
     logger.info(f"Updating price for: {url}")
 
+    page = None
     try:
         response = None
         for attempt in range(3):
+            if page: await page.close()
+            page = await get_stealthy_page(context)
             try:
                 response = await page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 if response and response.status == 200:
                     break
-                logger.warning(f"Attempt {attempt + 1} for {url} failed: {response.status if response else 'No Response'}")
-                await asyncio.sleep(random.uniform(2, 5))
+
+                status = response.status if response else 'No Response'
+                logger.warning(f"Attempt {attempt + 1} for {url} failed: {status}")
+
+                if status == 403:
+                    cooldown = random.uniform(30, 60)
+                    logger.warning(f"403 Forbidden detected. Cooling down for {cooldown:.1f}s...")
+                    await asyncio.sleep(cooldown)
+                else:
+                    await asyncio.sleep(random.uniform(2, 5))
             except Exception as e:
                 logger.warning(f"Attempt {attempt + 1} for {url} exception: {e}")
                 await asyncio.sleep(random.uniform(2, 5))
@@ -131,6 +142,8 @@ async def update_price(page, card_path: str):
 
     except Exception as e:
         logger.error(f"Error updating price for {url}: {e}")
+    finally:
+        if page: await page.close()
 
 async def main():
     parser = argparse.ArgumentParser(description="Maintain Shoprite product data.")
@@ -148,7 +161,6 @@ async def main():
                 ]
             )
             context = await get_hardened_context(browser)
-            page = await get_stealthy_page(context)
 
             products_root = "products"
             if not os.path.exists(products_root):
@@ -163,16 +175,19 @@ async def main():
                         cards.append(os.path.join(root, file))
 
             logger.info("Establishing cookies via home page...")
+            temp_page = await get_stealthy_page(context)
             try:
-                await page.goto("https://www.shoprite.co.za", wait_until="domcontentloaded", timeout=30000)
+                await temp_page.goto("https://www.shoprite.co.za", wait_until="domcontentloaded", timeout=30000)
                 await asyncio.sleep(random.uniform(2, 4))
             except Exception as e:
                 logger.warning(f"Failed to load home page: {e}")
+            finally:
+                await temp_page.close()
 
             logger.info(f"Found {len(cards)} product cards to update.")
             for card_path in cards:
-                await update_price(page, card_path)
-                await asyncio.sleep(1)
+                await update_price(context, card_path)
+                await asyncio.sleep(random.uniform(3, 7))
 
             await browser.close()
 
