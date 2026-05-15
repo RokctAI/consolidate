@@ -1,0 +1,90 @@
+[
+  {
+    "name": "All-Departments",
+    "count": 20
+  },
+  {
+    "name": "Bakery",
+    "count": 5
+  },
+  {
+    "name": "Beer",
+    "count": 1
+  },
+  {
+    "name": "Beer-and-Cider",
+    "count": 1
+  },
+  {
+    "name": "Bread-and-Rolls",
+    "count": 5
+  },
+  {
+    "name": "Cola",
+    "count": 1
+  },
+  {
+    "name": "Cooking-Ingredients",
+    "count": 5
+  },
+  {
+    "name": "Drinks",
+    "count": 2
+  },
+  {
+    "name": "Food",
+    "count": 17
+  },
+  {
+    "name": "Food-Cupboard",
+    "count": 7
+  },
+  {
+    "name": "Fresh-Food",
+    "count": 4
+  },
+  {
+    "name": "Fresh-Meat-and-Poultry",
+    "count": 2
+  },
+  {
+    "name": "Fresh-Vegetables",
+    "count": 1
+  },
+  {
+    "name": "Frozen-Food",
+    "count": 1
+  },
+  {
+    "name": "Frozen-Meat-and-Poultry",
+    "count": 1
+  },
+  {
+    "name": "Milk%2C-Butter-and-Eggs",
+    "count": 1
+  },
+  {
+    "name": "Sanitary-Pads-and-Panty-Liners",
+    "count": 1
+  },
+  {
+    "name": "Sanitary-Protection",
+    "count": 1
+  },
+  {
+    "name": "Soft-Drinks",
+    "count": 1
+  },
+  {
+    "name": "Spreads%2C-Honey-and-Preserves",
+    "count": 1
+  },
+  {
+    "name": "Table-Condiments-and-Dressings",
+    "count": 1
+  },
+  {
+    "name": "Toiletries",
+    "count": 1
+  }
+]
