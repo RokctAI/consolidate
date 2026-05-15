@@ -50,13 +50,14 @@ JS_PRICE_EXTRACTION = """() => {
         const next = el.nextElementSibling;
         return next && next.innerText.toUpperCase().includes('WITH CARD');
     });
-    const promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates')?.innerText.trim();
+    let promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates, .pdp-main-details .promotion-validity')?.innerText.trim();
+    if (promoDates && promoDates.length > 50) promoDates = null;
 
     return {
         price_now_raw: getPriceText('.special-now-price, .price-now, .pdp-main-details__price'),
         price_was_raw: getPriceText('.special-was-price, .price-was, .pdp-main-details__price-was'),
         is_card_price: !!cardPriceEl || document.body.innerText.includes('WITH CARD'),
-        promotion_dates: promoDates || Array.from(document.querySelectorAll('*')).find(el => el.innerText && el.innerText.includes('Valid until'))?.innerText.trim(),
+        promotion_dates: promoDates,
         insider_product: window.insider_object?.product
     };
 }"""
@@ -280,14 +281,15 @@ async def scrape_product(page, url: str) -> bool:
                 const next = el.nextElementSibling;
                 return next && next.innerText.toUpperCase().includes('WITH CARD');
             });
-            const promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates')?.innerText.trim();
+            let promoDates = document.querySelector('.pdp-main-details__promotion-dates, .product-promotion__dates, .pdp-main-details .promotion-validity')?.innerText.trim();
+            if (promoDates && promoDates.length > 50) promoDates = null;
 
             return {
                 name: document.querySelector('h1, .pdp-main-details__name')?.innerText.trim(),
                 price_now_raw: getPriceText('.special-now-price, .price-now, .pdp-main-details__price'),
                 price_was_raw: getPriceText('.special-was-price, .price-was, .pdp-main-details__price-was'),
                 is_card_price: !!cardPriceEl || document.body.innerText.includes('WITH CARD'),
-                promotion_dates: promoDates || Array.from(document.querySelectorAll('*')).find(el => el.innerText && el.innerText.includes('Valid until'))?.innerText.trim(),
+                promotion_dates: promoDates,
                 description: document.querySelector('.pdp__description, .pdp-details__description, .product-details-description, .pdp-main-details__description')?.innerText.trim(),
                 images: Array.from(imageSources).filter(src => src && !src.includes('logo')),
                 nutrition_raw: nutritionText.join('\\n'),
@@ -438,7 +440,7 @@ async def scrape_product(page, url: str) -> bool:
         return False
 
 async def main():
-    parser = argparse.ArgumentParser(description="Shoprite Product Scraper")
+    parser = argparse.ArgumentParser(description="PriceGrid Product Scraper")
     parser.add_argument("--category", type=str, default="All-Departments", help="Category to scrape")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of products")
     parser.add_argument("--headless", action="store_true", default=False,

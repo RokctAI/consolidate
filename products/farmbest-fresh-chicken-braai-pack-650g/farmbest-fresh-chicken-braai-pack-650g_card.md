@@ -6,7 +6,7 @@
 Skip to navigation
 BROWSE PRODUCTS
 ALL SPECIALS
-EXPLORE SHOPRITE
+EXPLORE PRICEGRID
 CATALOGUES
 XTRA SAVINGS
 All Departments
@@ -27,7 +27,7 @@ Product Information
 Media
 Simple to prepare, this chicken braai pack offers a straightforward solution for a delicious meal, whether it's a family dinner or a social gathering around a braai. This pack contains cuts that are known for their juiciness and tenderness once cooked. The selection is versatile, allowing for preparation in an oven, on a grill, or within a stew, catering to a wide range of cooking methods. Each chicken piece is plump, ensuring a satisfying texture and flavour.
 YOUR PROFILE
-NEW TO SHOPRITE? SIGN UP
+NEW TO PRICEGRID? SIGN UP
 FIND A STORE
 SIGN IN
 CUSTOMER SERVICE
@@ -48,15 +48,15 @@ XTRA SAVINGS
 ALL XTRA SAVINGS DEALS
 ABOUT XTRA SAVINGS
 MANAGE YOUR CARD
-DOWNLOAD THE SHOPRITE APP
+DOWNLOAD THE PRICEGRID APP
 FOLLOW US
 TERMS & CONDITIONS
 XTRA SAVINGS TERMS & CONDITIONS
 PRIVACY POLICY
 COOKIE POLICY
-SHOPRITE HOLDINGS
+PRICEGRID HOLDINGS
 COMPETITION TERMS & CONDITIONS
-© 2026 All rights reserved. Shoprite Holdings
+© 2026 All rights reserved. PriceGrid Holdings
 
 ## Description
 Enjoy this chicken braai pack that offers versatile, juicy, and tender pieces. Suitable for various cooking methods, the plump pieces are convenient to prepare and can be served as a standalone dish or with sides.
