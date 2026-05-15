@@ -28,3 +28,4 @@ Stock up on a versatile kitchen staple with Freshmark Potatoes, packed in a stur
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Vegetables/Potatoes-7kg/p/10147186EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

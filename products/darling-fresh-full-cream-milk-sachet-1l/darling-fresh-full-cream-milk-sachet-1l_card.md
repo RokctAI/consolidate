@@ -27,3 +27,4 @@ For all your morning cereal bowls to your cup of coffee and milk for fulfilling 
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Milk%2C-Butter-and-Eggs/Darling-Fresh-Full-Cream-Milk-Sachet-1L/p/10124889EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

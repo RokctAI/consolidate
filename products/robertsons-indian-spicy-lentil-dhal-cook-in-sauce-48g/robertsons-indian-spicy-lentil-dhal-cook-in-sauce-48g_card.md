@@ -28,3 +28,4 @@ Bring the spicy aromas and enticing flavours of India together in a tasty lentil
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Robertsons-Indian-Spicy-Lentil-Dhal-Cook-In-Sauce-48g/p/10641181EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

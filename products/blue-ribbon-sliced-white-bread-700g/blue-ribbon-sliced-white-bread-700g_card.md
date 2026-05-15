@@ -33,3 +33,4 @@ Consistently delivering the taste and quality you expect, Blue Ribbon Sliced Whi
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Sliced-White-Bread-700g/p/10136370EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

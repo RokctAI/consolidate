@@ -17,3 +17,4 @@ Achieve restaurant-quality crunch effortlessly! Our Easy Crispy Seafood Coating 
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Easy-Crispy-Seafood-Coating-Mix-200g/p/10602244EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

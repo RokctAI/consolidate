@@ -1,0 +1,131 @@
+{
+  "id": "brown-bread-600g",
+  "product_id": "10810522",
+  "name": "Brown Bread 600g",
+  "category": "Bread-and-Rolls",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Bakery",
+    "Bread-and-Rolls"
+  ],
+  "current_price": "11.99",
+  "was_price": null,
+  "description": "Bakery's Brown Bread offers is perfect for sandwiches or snacks. Enjoy its rich flavour and satisfying texture, whether toasted or fresh. Ideal for various toppings, from butter and jam to avocado and smoked salmon.",
+  "ingredients": "Brown Bread Wheat Flour Triticum Aestivum (Gluten), Water, Yeast, Sugar, Salt, Vegetable Fat (Palm Fruit), Soya Flour, Preservative (Calcium Propionate), Emulsifiers, Calcium Carbonate, Enzymes, Flour Improver, Stabiliser, Vitamins (A, B1, B2, B3, B6, D, Folic Acid), Minerals (Electrolytic Iron, Zinc Oxide)",
+  "allergens": "Contains: Gluten, Soya, Wheat.",
+  "benefits": "Pre-sliced for convenience Soft texture Versatile for various recipes Perfect for your favourite sandwich or snack Can be enjoyed toasted",
+  "barcode": "6001224497410",
+  "brand": "Bakery",
+  "weight": "600g",
+  "specifications": {
+    "Product Brand": "Bakery",
+    "Product Width (mm)": "100",
+    "Product Height (mm)": "270",
+    "Product Length (mm)": "270",
+    "Product Weight": "600g",
+    "Product Gross Weight (g)": "615",
+    "Product Depth (mm)": "280",
+    "What's in the box": "1 x 600g Bakery Brown Bread",
+    "Unit of Measure": "EA",
+    "Main Barcode": "6001224497410",
+    "Ingredients": "Brown Bread Wheat Flour Triticum Aestivum (Gluten), Water, Yeast, Sugar, Salt, Vegetable Fat (Palm Fruit), Soya Flour, Preservative (Calcium Propionate), Emulsifiers, Calcium Carbonate, Enzymes, Flour Improver, Stabiliser, Vitamins (A, B1, B2, B3, B6, D, Folic Acid), Minerals (Electrolytic Iron, Zinc Oxide)",
+    "Allergens": "Contains: Gluten, Soya, Wheat.",
+    "Serving Size": "67g",
+    "Benefits & Features": "Pre-sliced for convenience Soft texture Versatile for various recipes Perfect for your favourite sandwich or snack Can be enjoyed toasted"
+  },
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "900kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "39g",
+      "per_serving": "26g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "5.0g",
+      "per_serving": "3.4g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "17g",
+      "per_serving": "1.1g"
+    },
+    {
+      "nutrient": "Of which saturated fat",
+      "per_100g": "0.7g",
+      "per_serving": "0.5g"
+    },
+    {
+      "nutrient": "Of which Monounsaturated fat",
+      "per_100g": "0.4g",
+      "per_serving": "0.3g"
+    },
+    {
+      "nutrient": "Of which Polyunsaturated fat",
+      "per_100g": "0.7g",
+      "per_serving": "0.5g"
+    },
+    {
+      "nutrient": "Of which trans fat",
+      "per_100g": "0.0g",
+      "per_serving": "0.0g"
+    },
+    {
+      "nutrient": "Protein",
+      "per_100g": "9.1g",
+      "per_serving": "6.1g"
+    },
+    {
+      "nutrient": "Dietary fibre",
+      "per_100g": "3.3g",
+      "per_serving": "2.2g"
+    },
+    {
+      "nutrient": "Cholestrol",
+      "per_100g": "0mg",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Total sodium",
+      "per_100g": "316mg",
+      "per_serving": "212g"
+    },
+    {
+      "nutrient": "Energy",
+      "per_100g": "",
+      "per_serving": "603kJ"
+    },
+    {
+      "nutrient": "Cholesterol",
+      "per_100g": "",
+      "per_serving": "0mg"
+    },
+    {
+      "nutrient": "Serving Size",
+      "per_100g": "",
+      "per_serving": "67g"
+    }
+  ],
+  "images": [
+    "products/brown-bread-600g/images/brown-bread-600g_0.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_1.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_2.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_3.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_4.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_5.jpg",
+    "products/brown-bread-600g/images/brown-bread-600g_6.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Brown-Bread-600g/p/10810522EA",
+  "scraped_date": "2026-05-14"
+}

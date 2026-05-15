@@ -1,0 +1,76 @@
+{
+  "id": "darling-fresh-full-cream-milk-sachet-1l",
+  "product_id": "10124889",
+  "name": "Darling Fresh Full Cream Milk Sachet 1L",
+  "category": "Milk%2C-Butter-and-Eggs",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Fresh-Food",
+    "Milk%2C-Butter-and-Eggs"
+  ],
+  "current_price": "15.99",
+  "was_price": null,
+  "description": "For all your morning cereal bowls to your cup of coffee and milk for fulfilling treat.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "270kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "5g",
+      "per_serving": "13g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "4.8g",
+      "per_serving": "12g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "3.5g",
+      "per_serving": "8.7g"
+    },
+    {
+      "nutrient": "Of which saturated fat",
+      "per_100g": "2.4g",
+      "per_serving": "5.9g"
+    },
+    {
+      "nutrient": "Protein",
+      "per_100g": "3.39g",
+      "per_serving": "8.48g"
+    },
+    {
+      "nutrient": "5g Total sodium",
+      "per_100g": "36mg",
+      "per_serving": "90g"
+    },
+    {
+      "nutrient": "Energy",
+      "per_100g": "",
+      "per_serving": "675kJ"
+    }
+  ],
+  "images": [
+    "products/darling-fresh-full-cream-milk-sachet-1l/images/darling-fresh-full-cream-milk-sachet-1l_0.jpg",
+    "products/darling-fresh-full-cream-milk-sachet-1l/images/darling-fresh-full-cream-milk-sachet-1l_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Milk%2C-Butter-and-Eggs/Darling-Fresh-Full-Cream-Milk-Sachet-1L/p/10124889EA",
+  "scraped_date": "2026-05-14"
+}

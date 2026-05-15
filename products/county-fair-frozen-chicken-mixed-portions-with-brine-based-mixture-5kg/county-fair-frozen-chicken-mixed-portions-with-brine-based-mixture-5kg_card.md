@@ -15,3 +15,4 @@ Tender, juicy County Fair chicken portions, expertly brined for exquisite flavou
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Frozen-Food/Frozen-Meat-and-Poultry/County-Fair-Frozen-Chicken-Mixed-Portions-With-Brine-Based-Mixture-5kg/p/10538316EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

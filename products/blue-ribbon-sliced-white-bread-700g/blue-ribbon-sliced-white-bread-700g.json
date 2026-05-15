@@ -1,0 +1,94 @@
+{
+  "id": "blue-ribbon-sliced-white-bread-700g",
+  "product_id": "10136370",
+  "name": "Blue Ribbon Sliced White Bread 700g",
+  "category": "Bread-and-Rolls",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Bakery",
+    "Bread-and-Rolls"
+  ],
+  "current_price": "19.99",
+  "was_price": null,
+  "description": "Consistently delivering the taste and quality you expect, Blue Ribbon Sliced White Bread is a versatile and delicious option for any meal, that's a source of vitamin D. Perfect for family meals or gatherings, its soft texture and even slices make it ideal for sandwiches, toast, or as a side dish.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [
+    {
+      "nutrient": "Nutritional Information  Per",
+      "per_100g": "100g",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "ml Energy",
+      "per_100g": "1024kJ",
+      "per_serving": ""
+    },
+    {
+      "nutrient": "Carbohydrates",
+      "per_100g": "50g",
+      "per_serving": "75g"
+    },
+    {
+      "nutrient": "Of which total sugar",
+      "per_100g": "4.2g",
+      "per_serving": "6.3g"
+    },
+    {
+      "nutrient": "Total fat",
+      "per_100g": "1.7g",
+      "per_serving": "2.6g"
+    },
+    {
+      "nutrient": "Of which saturated fat",
+      "per_100g": "0.8g",
+      "per_serving": "1.2g"
+    },
+    {
+      "nutrient": "Of which Monounsaturated fat",
+      "per_100g": "0.3g",
+      "per_serving": "0.5g"
+    },
+    {
+      "nutrient": "Of which Polyunsaturated fat",
+      "per_100g": "0.6g",
+      "per_serving": "0.9g"
+    },
+    {
+      "nutrient": "1g Protein",
+      "per_100g": "6.7g",
+      "per_serving": "10.1g"
+    },
+    {
+      "nutrient": "Dietary fibre",
+      "per_100g": "5.9g",
+      "per_serving": "8.9g"
+    },
+    {
+      "nutrient": "9mg Total sodium",
+      "per_100g": "356mg",
+      "per_serving": "534g"
+    },
+    {
+      "nutrient": "150Energy",
+      "per_100g": "",
+      "per_serving": "1536kJ"
+    }
+  ],
+  "images": [
+    "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_0.jpg",
+    "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_1.jpg",
+    "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_2.jpg",
+    "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_3.jpg",
+    "products/blue-ribbon-sliced-white-bread-700g/images/blue-ribbon-sliced-white-bread-700g_4.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Blue-Ribbon-Sliced-White-Bread-700g/p/10136370EA",
+  "scraped_date": "2026-05-14"
+}

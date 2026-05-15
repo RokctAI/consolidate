@@ -1,0 +1,33 @@
+{
+  "id": "panini-roll-single",
+  "product_id": "10397287",
+  "name": "Panini Roll  Single",
+  "category": "Bread-and-Rolls",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Bakery",
+    "Bread-and-Rolls"
+  ],
+  "current_price": "4.99",
+  "was_price": null,
+  "description": "Fresh Bakery Panini Roll boasts a soft interior and golden crust, ideal for sandwiches or side dishes. Perfect for individual servings, it can be enjoyed toasted or plain, consistently enhancing any meal.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [],
+  "images": [
+    "products/panini-roll-single/images/panini-roll-single_0.jpg",
+    "products/panini-roll-single/images/panini-roll-single_1.jpg",
+    "products/panini-roll-single/images/panini-roll-single_2.jpg",
+    "products/panini-roll-single/images/panini-roll-single_3.jpg",
+    "products/panini-roll-single/images/panini-roll-single_4.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Panini-Roll-Single/p/10397287EA",
+  "scraped_date": "2026-05-14"
+}

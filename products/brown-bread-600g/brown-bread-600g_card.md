@@ -64,3 +64,4 @@ Pre-sliced for convenience Soft texture Versatile for various recipes Perfect fo
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Brown-Bread-600g/p/10810522EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

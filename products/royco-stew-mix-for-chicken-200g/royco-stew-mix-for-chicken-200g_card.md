@@ -14,3 +14,4 @@ Effortlessly transform your chicken dishes with Royco Stew Mix. This 200g blend 
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Royco-Stew-Mix-For-Chicken-200g/p/10498612EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

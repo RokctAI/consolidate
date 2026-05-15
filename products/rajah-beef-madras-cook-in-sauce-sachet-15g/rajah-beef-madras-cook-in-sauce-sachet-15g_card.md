@@ -31,3 +31,4 @@ Craft a vibrant beef madras feast for four with this authentic Rajah spice blend
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Cooking-Ingredients/Rajah-Beef-Madras-Cook-In-Sauce-Sachet-15g/p/10641192EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

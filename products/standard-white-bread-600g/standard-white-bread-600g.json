@@ -1,0 +1,30 @@
+{
+  "id": "standard-white-bread-600g",
+  "product_id": "10141145",
+  "name": "Standard White Bread 600g",
+  "category": "Bread-and-Rolls",
+  "category_path": [
+    "All-Departments",
+    "Food",
+    "Bakery",
+    "Bread-and-Rolls"
+  ],
+  "current_price": "8.99",
+  "was_price": null,
+  "description": "Our bakery offers bread, rolls, French loaves and so much more, these fresh bakes are made with the finest ingredients and are of the highest quality.",
+  "ingredients": "",
+  "allergens": "",
+  "benefits": "",
+  "barcode": null,
+  "brand": null,
+  "weight": null,
+  "specifications": {},
+  "is_platform": false,
+  "nutrition": [],
+  "images": [
+    "products/standard-white-bread-600g/images/standard-white-bread-600g_0.jpg",
+    "products/standard-white-bread-600g/images/standard-white-bread-600g_1.jpg"
+  ],
+  "source_url": "https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Standard-White-Bread-600g/p/10141145EA",
+  "scraped_date": "2026-05-14"
+}

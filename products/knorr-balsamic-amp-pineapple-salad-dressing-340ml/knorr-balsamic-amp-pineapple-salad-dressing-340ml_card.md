@@ -14,3 +14,4 @@ Transform your meals with Knorr's vibrant Balsamic & Pineapple Dressing. This sw
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Food-Cupboard/Table-Condiments-and-Dressings/Knorr-Balsamic-and-Pineapple-Salad-Dressing-340ml/p/10618040EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

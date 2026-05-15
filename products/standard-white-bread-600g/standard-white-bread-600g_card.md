@@ -14,3 +14,4 @@ Our bakery offers bread, rolls, French loaves and so much more, these fresh bake
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Bakery/Bread-and-Rolls/Standard-White-Bread-600g/p/10141145EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false

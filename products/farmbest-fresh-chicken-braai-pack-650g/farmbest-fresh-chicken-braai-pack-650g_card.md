@@ -69,3 +69,4 @@ Enjoy this chicken braai pack that offers versatile, juicy, and tender pieces. S
 - **Source**: https://www.shoprite.co.za/All-Departments/Food/Fresh-Food/Fresh-Meat-and-Poultry/Farmbest-Fresh-Chicken-Braai-Pack-650g/p/10874870EA
 - **Scraped**: 2026-05-14
 - **Store**: Shoprite/Checkers
+- **Is Platform**: false
