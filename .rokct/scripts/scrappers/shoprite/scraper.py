@@ -17,18 +17,20 @@ from playwright.async_api import async_playwright
 os.makedirs(".rokct/agent/logs", exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
+    format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.FileHandler(".rokct/agent/logs/shoprite_scraper.log", mode="w"),
-        logging.StreamHandler(sys.stdout)
-    ]
+        logging.StreamHandler(sys.stdout),
+    ],
 )
 logger = logging.getLogger(__name__)
 
 failure_logger = logging.getLogger("failures")
 failure_logger.setLevel(logging.ERROR)
 failure_handler = logging.FileHandler(".rokct/agent/logs/shoprite_failures.log")
-failure_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(message)s'))
+failure_handler.setFormatter(
+    logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
+)
 failure_logger.addHandler(failure_handler)
 
 BASE_URL = "https://www.shoprite.co.za"
@@ -36,7 +38,7 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
 ]
 
 
@@ -68,20 +70,22 @@ def get_source_url() -> Optional[str]:
     if not os.path.exists(source_path):
         return None
     try:
-        with open(source_path, 'r') as f:
+        with open(source_path, "r") as f:
             for line in f:
-                if '- **URL**:' in line:
-                    return line.split(':', 1)[1].strip()
+                if "- **URL**:" in line:
+                    return line.split(":", 1)[1].strip()
     except Exception as e:
         logger.warning(f"Failed to read source card {source_path}: {e}")
     return None
 
+
 def slugify(text: str) -> str:
     text = text.lower()
-    text = re.sub(r'[^\w\s-]', '', text)
-    text = re.sub(r'[\s_-]+', '-', text)
-    text = text.strip('-')
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s_-]+", "-", text)
+    text = text.strip("-")
     return text
+
 
 def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[Any]]:
     """
@@ -90,11 +94,11 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[Any]]:
     price_now = None
     price_was = None
 
-    insider = data.get('insider_product')
+    insider = data.get("insider_product")
     if insider:
-        price_now = insider.get('unit_sale_price')
+        price_now = insider.get("unit_sale_price")
         # Check for NaN or None
-        if price_now is not None and str(price_now).lower() != 'nan':
+        if price_now is not None and str(price_now).lower() != "nan":
             try:
                 price_now = f"{float(price_now):.2f}"
             except (ValueError, TypeError):
@@ -102,33 +106,38 @@ def extract_price_from_page(data: Dict[str, Any]) -> Dict[str, Optional[Any]]:
         else:
             price_now = None
 
-        unit_price = insider.get('unit_price')
+        unit_price = insider.get("unit_price")
         try:
-            if unit_price is not None and price_now and float(unit_price) > float(price_now):
+            if (
+                unit_price is not None
+                and price_now
+                and float(unit_price) > float(price_now)
+            ):
                 price_was = f"{float(unit_price):.2f}"
         except (ValueError, TypeError):
             pass
 
     if not price_now:
-        raw_price = data.get('price_now_raw')
+        raw_price = data.get("price_now_raw")
         if raw_price:
-            match = re.search(r'R\s*(\d+(?:[\.,]\d+)?)', raw_price)
+            match = re.search(r"R\s*(\d+(?:[\.,]\d+)?)", raw_price)
             if match:
-                price_now = match.group(1).replace(',', '.')
+                price_now = match.group(1).replace(",", ".")
 
     if not price_was:
-        raw_was = data.get('price_was_raw')
+        raw_was = data.get("price_was_raw")
         if raw_was:
-            match = re.search(r'R\s*(\d+(?:[\.,]\d+)?)', raw_was)
+            match = re.search(r"R\s*(\d+(?:[\.,]\d+)?)", raw_was)
             if match:
-                price_was = match.group(1).replace(',', '.')
+                price_was = match.group(1).replace(",", ".")
 
     return {
         "current_price": price_now,
         "was_price": price_was,
-        "is_card_price": data.get('is_card_price', False),
-        "promotion_dates": data.get('promotion_dates')
+        "is_card_price": data.get("is_card_price", False),
+        "promotion_dates": data.get("promotion_dates"),
     }
+
 
 async def get_hardened_context(browser, headless: bool = False):
     """Creates a browser context with hardened fingerprints to avoid bot detection."""
@@ -147,10 +156,11 @@ async def get_hardened_context(browser, headless: bool = False):
             "Sec-Fetch-Mode": "navigate",
             "Sec-Fetch-Site": "none",
             "Sec-Fetch-User": "?1",
-            "Upgrade-Insecure-Requests": "1"
-        }
+            "Upgrade-Insecure-Requests": "1",
+        },
     )
     return context
+
 
 async def get_stealthy_page(context):
     """Creates a new page with playwright-stealth and manual overrides."""
@@ -158,11 +168,12 @@ async def get_stealthy_page(context):
 
     try:
         import playwright_stealth
-        if hasattr(playwright_stealth, 'Stealth'):
+
+        if hasattr(playwright_stealth, "Stealth"):
             await playwright_stealth.Stealth().apply_stealth_async(page)
-        elif hasattr(playwright_stealth, 'stealth_async'):
+        elif hasattr(playwright_stealth, "stealth_async"):
             await playwright_stealth.stealth_async(page)
-        elif hasattr(playwright_stealth, 'stealth'):
+        elif hasattr(playwright_stealth, "stealth"):
             # In some versions stealth is a function, in others it might be a module
             if callable(playwright_stealth.stealth):
                 res = playwright_stealth.stealth(page)
@@ -178,6 +189,7 @@ async def get_stealthy_page(context):
         Object.defineProperty(navigator, 'languages', {get: () => ['en-ZA', 'en']});
     """)
     return page
+
 
 async def scrape_product(page, url: str) -> bool:
     logger.info(f"Scraping product: {url}")
@@ -302,11 +314,11 @@ async def scrape_product(page, url: str) -> bool:
         }""")
 
         name = None
-        insider = data.get('insider_product')
-        if insider and insider.get('name'):
-            name = insider.get('name')
+        insider = data.get("insider_product")
+        if insider and insider.get("name"):
+            name = insider.get("name")
         else:
-            name = data.get('name')
+            name = data.get("name")
 
         if not name:
             logger.error(f"Could not find product name for {url}")
@@ -332,8 +344,9 @@ async def scrape_product(page, url: str) -> bool:
         }
 
         logger.info(f"Found {len(data.get('images', []))} candidate images")
-        for img_url in data.get('images', []):
-            if not img_url or img_url in seen_urls: continue
+        for img_url in data.get("images", []):
+            if not img_url or img_url in seen_urls:
+                continue
             seen_urls.add(img_url)
 
             full_img_url = urljoin(BASE_URL, img_url)
@@ -342,39 +355,43 @@ async def scrape_product(page, url: str) -> bool:
                 if img_response.status_code == 200:
                     filename = f"{product_slug}_{len(image_filenames)}.jpg"
                     filepath = f"{product_dir}/images/{filename}"
-                    with open(filepath, 'wb') as f:
+                    with open(filepath, "wb") as f:
                         f.write(img_response.content)
                     image_filenames.append(filename)
                     logger.info(f"Downloaded image: {filename}")
                 else:
-                    logger.warning(f"Failed to download image {full_img_url}, status: {img_response.status_code}")
+                    logger.warning(
+                        f"Failed to download image {full_img_url}, status: {img_response.status_code}"
+                    )
             except Exception as e:
                 logger.warning(f"Failed to download image {full_img_url}: {e}")
 
         nutrition_md = ""
-        raw_nut = data.get('nutrition_raw', '')
+        raw_nut = data.get("nutrition_raw", "")
         if raw_nut:
             per_100 = ""
             per_serving = ""
             if "per 100" in raw_nut.lower():
-                parts = re.split(r'per serving', raw_nut, flags=re.IGNORECASE)
+                parts = re.split(r"per serving", raw_nut, flags=re.IGNORECASE)
                 per_100 = parts[0]
                 if len(parts) > 1:
                     per_serving = parts[1]
 
-                nutrient_pattern = r'([\w\s•-]+?):?\s+([\d\.]+\s*[kKjJgGmM]+)'
+                nutrient_pattern = r"([\w\s•-]+?):?\s+([\d\.]+\s*[kKjJgGmM]+)"
                 nutrients_100 = re.findall(nutrient_pattern, per_100)
                 nutrients_serving = re.findall(nutrient_pattern, per_serving)
 
                 table_data = {}
                 for n_name, val in nutrients_100:
-                    n_name = n_name.strip().replace('• ', '')
-                    if n_name.lower() in ['information', 'nutritional']: continue
+                    n_name = n_name.strip().replace("• ", "")
+                    if n_name.lower() in ["information", "nutritional"]:
+                        continue
                     table_data[n_name] = [val, ""]
 
                 for n_name, val in nutrients_serving:
-                    n_name = n_name.strip().replace('• ', '')
-                    if n_name.lower() in ['information', 'nutritional']: continue
+                    n_name = n_name.strip().replace("• ", "")
+                    if n_name.lower() in ["information", "nutritional"]:
+                        continue
                     if n_name in table_data:
                         table_data[n_name][1] = val
                     else:
@@ -386,27 +403,41 @@ async def scrape_product(page, url: str) -> bool:
                         nutrition_md += f"| {n} | {vals[0]} | {vals[1]} |\n"
 
             if not nutrition_md:
-                lines = [l.strip() for l in raw_nut.split('\n') if l.strip()]
+                lines = [l.strip() for l in raw_nut.split("\n") if l.strip()]
                 if lines:
-                    nutrition_md = "\n## Nutrition Information\n" + "\n".join([f"- {l}" for l in lines])
+                    nutrition_md = "\n## Nutrition Information\n" + "\n".join(
+                        [f"- {l}" for l in lines]
+                    )
 
-        was_price_line = f"\n- **Was**: R{prices['was_price']}" if prices['was_price'] else ""
-        card_price_extra = " (WITH CARD)" if prices.get('is_card_price') else ""
-        valid_line = f"\n- **Validity**: {prices.get('promotion_dates')}" if prices.get('promotion_dates') else ""
+        was_price_line = (
+            f"\n- **Was**: R{prices['was_price']}" if prices["was_price"] else ""
+        )
+        card_price_extra = " (WITH CARD)" if prices.get("is_card_price") else ""
+        valid_line = (
+            f"\n- **Validity**: {prices.get('promotion_dates')}"
+            if prices.get("promotion_dates")
+            else ""
+        )
 
         images_list = "\n".join([f"- images/{fn}" for fn in image_filenames])
 
         additional_info = ""
-        if data.get('ingredients'):
+        if data.get("ingredients"):
             additional_info += f"\n## Ingredients\n{data['ingredients']}\n"
-        if data.get('allergens'):
+        if data.get("allergens"):
             additional_info += f"\n## Allergens\n{data['allergens']}\n"
-        if data.get('benefits'):
+        if data.get("benefits"):
             additional_info += f"\n## Benefits & Features\n{data['benefits']}\n"
-        if data.get('specifications'):
-            specs = data['specifications']
+        if data.get("specifications"):
+            specs = data["specifications"]
             if isinstance(specs, dict):
-                specs_md = "\n".join([f"- **{k}**: {v}" for k, v in specs.items() if not k.lower().startswith('nutritional')])
+                specs_md = "\n".join(
+                    [
+                        f"- **{k}**: {v}"
+                        for k, v in specs.items()
+                        if not k.lower().startswith("nutritional")
+                    ]
+                )
                 if specs_md:
                     additional_info += f"\n## Specifications\n{specs_md}\n"
             else:
@@ -415,10 +446,10 @@ async def scrape_product(page, url: str) -> bool:
         card_content = f"""# {name}
 
 ## Price
-- **Current Price**: R{prices['current_price'] or 'N/A'}{card_price_extra}{was_price_line}{valid_line}
+- **Current Price**: R{prices["current_price"] or "N/A"}{card_price_extra}{was_price_line}{valid_line}
 
 ## Description
-{data.get('description') or 'No description available.'}
+{data.get("description") or "No description available."}
 {additional_info}{nutrition_md}
 ## Images
 {images_list}
@@ -428,7 +459,7 @@ async def scrape_product(page, url: str) -> bool:
 - **Scraped**: {datetime.date.today().isoformat()}
 - **Store**: Shoprite/Checkers
 """
-        with open(card_path, 'w') as f:
+        with open(card_path, "w") as f:
             f.write(card_content)
 
         logger.info(f"Successfully scraped {product_slug}")
@@ -439,16 +470,27 @@ async def scrape_product(page, url: str) -> bool:
         failure_logger.error(f"Exception for {url}: {e}")
         return False
 
+
 async def main():
     parser = argparse.ArgumentParser(description="PriceGrid Product Scraper")
-    parser.add_argument("--category", type=str, default="All-Departments", help="Category to scrape")
+    parser.add_argument(
+        "--category", type=str, default="All-Departments", help="Category to scrape"
+    )
     parser.add_argument("--limit", type=int, default=0, help="Limit number of products")
-    parser.add_argument("--headless", action="store_true", default=False,
-                        help="Run browser in headless mode (default: False for local, set True for CI)")
+    parser.add_argument(
+        "--headless",
+        action="store_true",
+        default=False,
+        help="Run browser in headless mode (default: False for local, set True for CI)",
+    )
     args = parser.parse_args()
 
     source_url = get_source_url()
-    default_url = source_url if source_url else "https://www.shoprite.co.za/c-2256/All-Departments"
+    default_url = (
+        source_url
+        if source_url
+        else "https://www.shoprite.co.za/c-2256/All-Departments"
+    )
 
     if args.category == "All-Departments":
         cat_url = default_url
@@ -466,7 +508,7 @@ async def main():
                 "--disable-blink-features=AutomationControlled",
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
-            ]
+            ],
         )
         context = await get_hardened_context(browser, headless=args.headless)
         page = await get_stealthy_page(context)
@@ -484,16 +526,22 @@ async def main():
             response = None
             for attempt in range(3):
                 try:
-                    response = await page.goto(cat_url, wait_until="domcontentloaded", timeout=60000)
+                    response = await page.goto(
+                        cat_url, wait_until="domcontentloaded", timeout=60000
+                    )
                     if response and response.status == 200:
                         break
-                    logger.warning(f"Attempt {attempt + 1} failed with status: {response.status if response else 'No Response'}")
+                    logger.warning(
+                        f"Attempt {attempt + 1} failed with status: {response.status if response else 'No Response'}"
+                    )
                     await asyncio.sleep(random.uniform(2, 5))
                 except Exception as e:
                     logger.warning(f"Attempt {attempt + 1} exception: {e}")
                     await asyncio.sleep(random.uniform(2, 5))
 
-            logger.info(f"Final response status: {response.status if response else 'No Response'}")
+            logger.info(
+                f"Final response status: {response.status if response else 'No Response'}"
+            )
 
             await page.wait_for_timeout(5000)
 
@@ -509,9 +557,9 @@ async def main():
             }""")
 
             logger.info(f"Page title: {page_info['title']}")
-            if page_info['isBlocked']:
+            if page_info["isBlocked"]:
                 logger.error("Detected bot blocking or access denial page.")
-            if page_info['isMaintenance']:
+            if page_info["isMaintenance"]:
                 logger.warning("Site appears to be in maintenance mode.")
 
             if "/p/" in cat_url:
@@ -530,7 +578,9 @@ async def main():
                 }""")
 
             if len(product_links) == 0:
-                logger.warning(f"No product links found. Total <a> tags on page: {page_info['linkCount']}")
+                logger.warning(
+                    f"No product links found. Total <a> tags on page: {page_info['linkCount']}"
+                )
                 logger.debug(f"Page HTML Snippet: {page_info['htmlSnippet']}")
                 screenshot_path = f".rokct/agent/logs/category_debug_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
                 await page.screenshot(path=screenshot_path)
@@ -557,6 +607,7 @@ async def main():
             logger.error(f"Failed to scrape category {cat_url}: {e}")
         finally:
             await browser.close()
+
 
 if __name__ == "__main__":
     asyncio.run(main())
